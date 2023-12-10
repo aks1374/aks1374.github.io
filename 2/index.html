@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app="custom-webapp-ui" lang="en">
+<head>
+  <style>
+    body {
+      background-color: white;
+    }
+  </style>
+  <!-- Load the Telegram Library -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <!-- Load the AngularJS Library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script>
+    // Initialize the AngularJS stuff...
+    angular.module("custom-webapp-ui", []).controller('CustomUIController', function CustomUIController($scope) {
+      // Init our slider values that we will display
+      $scope.food = ""; // variable to store the text box value
+
+      // Initialize the "save" button
+      const saveButton = window.Telegram.WebApp.MainButton;
+      saveButton.text = "Save Command";
+      saveButton.enable();
+      saveButton.show();
+      // Make it send the "food" object (as JSON string) back to the backend
+      saveButton.onClick(function () {
+        window.Telegram.WebApp.sendData(JSON.stringify($scope.food));
+      })
+    });
+  </script>
+  <script>
+    // JavaScript
+    document.addEventListener("DOMContentLoaded", function () {
+      // Get the save button element
+      var saveButton = document.getElementById("saveButton");
+
+      // Add a click event listener to the save button
+      saveButton.addEventListener("click", function () {
+        // Get the command from the text box
+        var command = document.getElementById("commandInput").value;
+
+        // Send the command to the server-side
+        fetch("/command", {
+          method: "POST",
+          body: JSON.stringify({ command: command }),
+          headers: { "Content-Type": "application/json" }
+        })
+        .then(response => response.json())
+        .then(data => {
+          // Handle the response from the server-side
+          // Display the result in the UI
+          document.getElementById("result").innerText = data.result;
+        })
+        .catch(error => {
+          // Handle any error that occurs during the fetch request
+          console.log(error);
+        });
+      });
+    });
+  </script>
+</head>
+<body ng-controller="CustomUIController">
+  <div>
+    <div style="width: 120px; display: inline-block">Command:</div>
+    <input style="display: inline-block" type="text" id="commandInput">
+  </div>
+  <button id="saveButton">Save Command</button>
+  <div id="result"></div>
+</body>
+</html>
