@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Crypto</title>
+  <style>
+  </style>
+</head>
+<body>
+  <h1>Crypto Trader</h1>
+
+  <div>
+    <label for="symbolSelect">Symbol:</label>
+    <select id="symbolSelect">
+      <option value="BTC">BTC</option>
+      <option value="ETH">ETH</option>
+    </select>
+    <label for="leverageSelect">Leverage:</label>
+    <select id="leverageSelect">
+      <option value="1x">1x</option>
+      <option value="2x">2x</option>
+      <option value="3x">3x</option>
+      <option value="4x">4x</option>
+      <option value="5x">5x</option>
+      <option value="6x">6x</option>
+      <option value="7x">7x</option>
+      <option value="8x">8x</option>
+      <option value="9x">9x</option>
+      <option value="10x">10x</option>
+    </select>
+    <label for="usdtInput">USDT Amount:</label>
+    <input type="text" id="usdtInput">
+    <button type="button" onclick="sendTrade()">Trade</button>
+  </div>
+
+  <script>
+    function sendTrade() {
+      const symbolSelect = document.getElementById('symbolSelect');
+      const leverageSelect = document.getElementById('leverageSelect');
+      const usdtInput = document.getElementById('usdtInput');
+
+      const symbol = symbolSelect.value;
+      const leverage = leverageSelect.value;
+      const usdtAmount = usdtInput.value;
+
+      const serverUrl = 'http://localhost:80/bot-command';  // Change the server URL to match your setup
+      const payload = {
+        command: '/trade',
+        symbol: symbol,
+        leverage: leverage,
+        usdtAmount: usdtAmount
+      };
+
+      fetch(serverUrl, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
+      })
+      .then(response => response.json())
+      .then(data => {
+          console.log('Server Response:', data);
+      })
+      .catch(error => {
+          console.error('Error:', error);
+      });
+
+      usdtInput.value = '';
+    }
+  </script>
+</body>
+</html>
