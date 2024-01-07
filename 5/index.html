@@ -6,6 +6,12 @@
     #usdtInput {
       width: 50px;
     }
+    #sl_usdtInput {
+      width: 50px;
+    }
+    #tp_usdtInput {
+      width: 50px;
+    }
     body{
       background-color: white;
     }
@@ -36,12 +42,12 @@
   <h2>SL setting</h2>
 
   <div>
-    <label for="sl_symbolSelect">Symbol:</label>
+    <label for="symbolSelect">Symbol:</label>
     <select id="sl_symbolSelect">
       <option value="BTCUSDT">BTC</option>
       <option value="ETHUSDT">ETH</option>
     </select>
-    <label for="sl_usdtInput">Desired loss per usdt:</label>
+    <label for="usdtInput">Desired loss per usdt:</label>
     <input type="text" id="sl_usdtInput">
     <button type="button" onclick="sendSl()">Add</button>
   </div>
@@ -49,12 +55,12 @@
   <h2>TP setting</h2>
 
   <div>
-    <label for="tp_symbolSelect">Symbol:</label>
+    <label for="symbolSelect">Symbol:</label>
     <select id="tp_symbolSelect">
       <option value="BTCUSDT">BTC</option>
       <option value="ETHUSDT">ETH</option>
     </select>
-    <label for="tp_usdtInput">Desired loss per usdt:</label>
+    <label for="usdtInput">Desired loss per usdt:</label>
     <input type="text" id="tp_usdtInput">
     <button type="button" onclick="sendTp()">Add</button>
   </div>
@@ -96,11 +102,11 @@
     }
 
     function sendSl() {
-      const sl_symbolSelect = document.getElementById('sl_symbolSelect');
-      const sl_usdtInput = document.getElementById('sl_usdtInput');
+      const symbolSelect = document.getElementById('sl_symbolSelect');
+      const usdtInput = document.getElementById('sl_usdtInput');
 
-      const sl_symbol = sl_symbolSelect.value;
-      const desired_loss = sl_usdtInput.value;
+      const sl_symbol = symbolSelect.value;
+      const desired_loss = usdtInput.value;
 
       const serverUrl = 'https://nominally-amused-calf.ngrok-free.app/bot-command';
       const payload = {
@@ -124,15 +130,15 @@
           console.error('Error:', error);
       });
 
-      sl_usdtInput.value = '';
+      usdtInput.value = '';
     }
 
     function sendTp() {
-      const tp_symbolSelect = document.getElementById('tp_symbolSelect');
-      const tp_usdtInput = document.getElementById('tp_usdtInput');
+      const symbolSelect = document.getElementById('tp_symbolSelect');
+      const usdtInput = document.getElementById('tp_usdtInput');
 
-      const tp_symbol = tp_symbolSelect.value;
-      const desired_profit = tp_usdtInput.value;
+      const tp_symbol = symbolSelect.value;
+      const desired_profit = usdtInput.value;
 
       const serverUrl = 'https://nominally-amused-calf.ngrok-free.app/bot-command';
       const payload = {
