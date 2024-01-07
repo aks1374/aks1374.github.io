@@ -36,12 +36,12 @@
   <h2>SL setting</h2>
 
   <div>
-    <label for="symbolSelect">Symbol:</label>
-    <select id="symbolSelect">
+    <label for="sl_symbolSelect">Symbol:</label>
+    <select id="sl_symbolSelect">
       <option value="BTCUSDT">BTC</option>
       <option value="ETHUSDT">ETH</option>
     </select>
-    <label for="usdtInput">Desired loss per usdt:</label>
+    <label for="sl_usdtInput">Desired loss per usdt:</label>
     <input type="text" id="usdtInput">
     <button type="button" onclick="sendSl()">Add</button>
   </div>
@@ -49,12 +49,12 @@
   <h2>TP setting</h2>
 
   <div>
-    <label for="symbolSelect">Symbol:</label>
-    <select id="symbolSelect">
+    <label for="tp_symbolSelect">Symbol:</label>
+    <select id="tp_symbolSelect">
       <option value="BTCUSDT">BTC</option>
       <option value="ETHUSDT">ETH</option>
     </select>
-    <label for="usdtInput">Desired loss per usdt:</label>
+    <label for="tp_usdtInput">Desired loss per usdt:</label>
     <input type="text" id="usdtInput">
     <button type="button" onclick="sendTp()">Add</button>
   </div>
@@ -96,8 +96,8 @@
     }
     
     function sendSl() {
-      const symbolSelect = document.getElementById('symbolSelect');
-      const usdtInput = document.getElementById('usdtInput');
+      const symbolSelect = document.getElementById('sl_symbolSelect');
+      const usdtInput = document.getElementById('sl_usdtInput');
 
       const sl_symbol = symbolSelect.value;
       const desired_loss = usdtInput.value;
@@ -128,8 +128,8 @@
     }
     
     function sendTp() {
-      const symbolSelect = document.getElementById('symbolSelect');
-      const usdtInput = document.getElementById('usdtInput');
+      const symbolSelect = document.getElementById('tp_symbolSelect');
+      const usdtInput = document.getElementById('tp_usdtInput');
 
       const tp_symbol = symbolSelect.value;
       const desired_profit = usdtInput.value;
