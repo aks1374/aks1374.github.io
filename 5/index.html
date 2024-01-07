@@ -105,8 +105,8 @@
       const serverUrl = 'https://nominally-amused-calf.ngrok-free.app/bot-command';
       const payload = {
         command: '/sl',
-        symbol: symbol,
-        usdtAmount: usdtAmount
+        sl_symbol: sl_symbol,
+        desired_loss: desired_loss
       };
 
       fetch(serverUrl, {
@@ -135,9 +135,10 @@
       const desired_profit = usdtInput.value;
 
       const serverUrl = 'https://nominally-amused-calf.ngrok-free.app/bot-command';
+      const payload = {
         command: '/tp',
-        symbol: symbol,
-        usdtAmount: usdtAmount
+        tp_symbol: tp_symbol,
+        desired_profit: desired_profit
       };
 
       fetch(serverUrl, {
