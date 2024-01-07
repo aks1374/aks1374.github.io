@@ -59,42 +59,7 @@
     <button type="button" onclick="sendTp()">Add</button>
   </div>
 
-  <script>
-    function sendTrade() {
-      const symbolSelect = document.getElementById('symbolSelect');
-      const leverageSelect = document.getElementById('leverageSelect');
-      const usdtInput = document.getElementById('usdtInput');
-
-      const symbol = symbolSelect.value;
-      const leverage = leverageSelect.value;
-      const usdtAmount = usdtInput.value;
-
-      const serverUrl = 'https://nominally-amused-calf.ngrok-free.app/bot-command';
-      const payload = {
-        command: '/trade',
-        symbol: symbol,
-        leverage: leverage,
-        usdtAmount: usdtAmount
-      };
-
-      fetch(serverUrl, {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(payload),
-      })
-      .then(response => response.json())
-      .then(data => {
-          console.log('Server Response:', data);
-      })
-      .catch(error => {
-          console.error('Error:', error);
-      });
-
-      usdtInput.value = '';
-    }
-  </script>
+ 
   <script>
     function sendSl() {
       const sl_symbolSelect = document.getElementById('sl_symbolSelect');
@@ -128,38 +93,6 @@
       sl_usdtInput.value = '';
     }
   </script>
-  <script>
-    function sendTp() {
-      const tp_symbolSelect = document.getElementById('tp_symbolSelect');
-      const tp_usdtInput = document.getElementById('tp_usdtInput');
 
-      const tp_symbol = tp_symbolSelect.value;
-      const desired_profit = tp_usdtInput.value;
-
-      const serverUrl = 'https://nominally-amused-calf.ngrok-free.app/bot-command';
-      const payload = {
-        command: '/tp',
-        tp_symbol: tp_symbol,
-        desired_profit: desired_profit
-      };
-
-      fetch(serverUrl, {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(payload),
-      })
-      .then(response => response.json())
-      .then(data => {
-          console.log('Server Response:', data);
-      })
-      .catch(error => {
-          console.error('Error:', error);
-      });
-
-      tp_usdtInput.value = '';
-    }
-  </script>
 </body>
 </html>
