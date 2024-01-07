@@ -33,6 +33,32 @@
     <button type="button" onclick="sendTrade()">Trade</button>
   </div>
 
+  <h2>SL setting</h2>
+
+  <div>
+    <label for="symbolSelect">Symbol:</label>
+    <select id="symbolSelect">
+      <option value="BTCUSDT">BTC</option>
+      <option value="ETHUSDT">ETH</option>
+    </select>
+    <label for="usdtInput">Desired loss per usdt:</label>
+    <input type="text" id="usdtInput">
+    <button type="button" onclick="sendSl()">Add</button>
+  </div>
+
+  <h2>TP setting</h2>
+
+  <div>
+    <label for="symbolSelect">Symbol:</label>
+    <select id="symbolSelect">
+      <option value="BTCUSDT">BTC</option>
+      <option value="ETHUSDT">ETH</option>
+    </select>
+    <label for="usdtInput">Desired loss per usdt:</label>
+    <input type="text" id="usdtInput">
+    <button type="button" onclick="sendTp()">Add</button>
+  </div>
+
   <script>
     function sendTrade() {
       const symbolSelect = document.getElementById('symbolSelect');
@@ -43,11 +69,74 @@
       const leverage = leverageSelect.value;
       const usdtAmount = usdtInput.value;
 
-      const serverUrl = 'https://nominally-amused-calf.ngrok-free.app/bot-command';  // Change the server URL to match your setup
+      const serverUrl = 'https://nominally-amused-calf.ngrok-free.app/bot-command';
       const payload = {
         command: '/trade',
         symbol: symbol,
         leverage: leverage,
+        usdtAmount: usdtAmount
+      };
+
+      fetch(serverUrl, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
+      })
+      .then(response => response.json())
+      .then(data => {
+          console.log('Server Response:', data);
+      })
+      .catch(error => {
+          console.error('Error:', error);
+      });
+
+      usdtInput.value = '';
+    }
+    
+    function sendSl() {
+      const symbolSelect = document.getElementById('symbolSelect');
+      const usdtInput = document.getElementById('usdtInput');
+
+      const sl_symbol = symbolSelect.value;
+      const desired_loss = usdtInput.value;
+
+      const serverUrl = 'https://nominally-amused-calf.ngrok-free.app/bot-command';
+      const payload = {
+        command: '/sl',
+        symbol: symbol,
+        usdtAmount: usdtAmount
+      };
+
+      fetch(serverUrl, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
+      })
+      .then(response => response.json())
+      .then(data => {
+          console.log('Server Response:', data);
+      })
+      .catch(error => {
+          console.error('Error:', error);
+      });
+
+      usdtInput.value = '';
+    }
+    
+    function sendTp() {
+      const symbolSelect = document.getElementById('symbolSelect');
+      const usdtInput = document.getElementById('usdtInput');
+
+      const tp_symbol = symbolSelect.value;
+      const desired_profit = usdtInput.value;
+
+      const serverUrl = 'https://nominally-amused-calf.ngrok-free.app/bot-command';
+        command: '/tp',
+        symbol: symbol,
         usdtAmount: usdtAmount
       };
 
