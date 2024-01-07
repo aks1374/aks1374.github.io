@@ -65,6 +65,9 @@
     <button type="button" onclick="sendTp()">Add</button>
   </div>
 
+  <h2>Open positions</h2>
+  <button type="button" onclick="sendOp()">Click me to send you the open positions</button>
+
   <script>
     function sendTrade() {
       const symbolSelect = document.getElementById('symbolSelect');
@@ -163,6 +166,28 @@
       });
 
       tp_usdtInput.value = '';
+    }
+
+    function sendOp() {
+      const serverUrl = 'https://nominally-amused-calf.ngrok-free.app/bot-command';
+      const payload = {
+        command: '/open_positions'
+      };
+
+      fetch(serverUrl, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
+      })
+      .then(response => response.json())
+      .then(data => {
+          console.log('Server Response:', data);
+      })
+      .catch(error => {
+          console.error('Error:', error);
+      });
     }
   </script>
 </body>
