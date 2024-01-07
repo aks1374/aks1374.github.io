@@ -96,11 +96,11 @@
     }
     
     function sendSl() {
-      const symbolSelect = document.getElementById('sl_symbolSelect');
-      const usdtInput = document.getElementById('sl_usdtInput');
+      const sl_symbolSelect = document.getElementById('sl_symbolSelect');
+      const sl_usdtInput = document.getElementById('sl_usdtInput');
 
-      const sl_symbol = symbolSelect.value;
-      const desired_loss = usdtInput.value;
+      const sl_symbol = sl_symbolSelect.value;
+      const desired_loss = sl_usdtInput.value;
 
       const serverUrl = 'https://nominally-amused-calf.ngrok-free.app/bot-command';
       const payload = {
@@ -124,15 +124,15 @@
           console.error('Error:', error);
       });
 
-      usdtInput.value = '';
+      sl_usdtInput.value = '';
     }
     
     function sendTp() {
-      const symbolSelect = document.getElementById('tp_symbolSelect');
-      const usdtInput = document.getElementById('tp_usdtInput');
+      const tp_symbolSelect = document.getElementById('tp_symbolSelect');
+      const tp_usdtInput = document.getElementById('tp_usdtInput');
 
-      const tp_symbol = symbolSelect.value;
-      const desired_profit = usdtInput.value;
+      const tp_symbol = tp_symbolSelect.value;
+      const desired_profit = tp_usdtInput.value;
 
       const serverUrl = 'https://nominally-amused-calf.ngrok-free.app/bot-command';
       const payload = {
@@ -156,7 +156,7 @@
           console.error('Error:', error);
       });
 
-      usdtInput.value = '';
+      tp_usdtInput.value = '';
     }
   </script>
 </body>
