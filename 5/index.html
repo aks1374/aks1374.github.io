@@ -26,7 +26,7 @@
       <option value="BTCUSDT">BTC</option>
       <option value="ETHUSDT">ETH</option>
     </select>
-    <label for="leverageSelect">X:</label>
+    <label for="leverageSelect">Lvrg:</label>
     <select id="leverageSelect">
       <option value="1">1x</option>
       <option value="2">2x</option>
@@ -65,7 +65,7 @@
     <button type="button" onclick="sendTp()">Add</button>
   </div>
 
-  <h2>Cancel trade order</h2>
+  <h2>Cancel trade queue</h2>
 
   <div>
     <label for="symbolSelect">Cancel trade from queue for:</label>
@@ -79,7 +79,15 @@
   <h2>Other options</h2>
   <button type="button" onclick="sendOp()">Load open positions</button>
   <button type="button" onclick="sendCancel()">Cancel all open orders</button>
-  <h6>Note that open orders doesn't contain queue orders.</h6>
+  <h5>Note that open orders doesn't contain queue orders.</h5>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <p>Welcome to the Trading Bot! Execute and manage cryptocurrency trades effortlessly. Connect your API key and secret, send trade information, and let the bot handle the rest. Set stop-loss and take-profit levels for efficient risk management. Simplify your trading experience and maximize your potential profits with ease.</p>
 
 <script>
 function sendRequest(command, data) {
