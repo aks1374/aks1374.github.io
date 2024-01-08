@@ -70,29 +70,29 @@
   <button type="button" onclick="sendCancel()">Cancel all open orders</button>
   <p>Note that open orders doesn't contain queue orders.</p>
 
-  <script>
-    function sendRequest(command, data) {
-    const serverUrl = 'https://nominally-amused-calf.ngrok-free.app/bot-command';
-    const payload = {
-        command: command,
-        ...data
-    };
+<script>
+function sendRequest(command, data) {
+        const serverUrl = 'https://nominally-amused-calf.ngrok-free.app/bot-command';
+        const payload = {
+            command: command,
+            ...data
+        };
 
-    fetch(serverUrl, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Server Response:', data);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-}
+        fetch(serverUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Server Response:', data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
 
 function sendTrade() {
     const symbolSelect = document.getElementById('symbolSelect');
@@ -151,6 +151,9 @@ function sendTp() {
 function sendOp() {
     sendRequest('/open_positions', {});
 }
-  </script>
+function sendOp() {
+    sendRequest('/cancel_open_orders', {});
+}
+</script>
 </body>
 </html>
