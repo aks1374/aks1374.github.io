@@ -65,130 +65,92 @@
     <button type="button" onclick="sendTp()">Add</button>
   </div>
 
-  <h2>Open positions</h2>
-  <button type="button" onclick="sendOp()">Click me to send you the open positions</button>
+  <h2>Other options</h2>
+  <button type="button" onclick="sendOp()">Load open positions</button>
+  <button type="button" onclick="sendCancel()">Cancel all open orders</button>
+  <p>Note that open orders doesn't contain queue orders.</p>
 
   <script>
-    function sendTrade() {
-      const symbolSelect = document.getElementById('symbolSelect');
-      const leverageSelect = document.getElementById('leverageSelect');
-      const usdtInput = document.getElementById('usdtInput');
+    function sendRequest(command, data) {
+    const serverUrl = 'https://nominally-amused-calf.ngrok-free.app/bot-command';
+    const payload = {
+        command: command,
+        ...data
+    };
 
-      const symbol = symbolSelect.value;
-      const leverage = leverageSelect.value;
-      const usdtAmount = usdtInput.value;
+    fetch(serverUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Server Response:', data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
 
-      const serverUrl = 'https://nominally-amused-calf.ngrok-free.app/bot-command';
-      const payload = {
-        command: '/trade',
+function sendTrade() {
+    const symbolSelect = document.getElementById('symbolSelect');
+    const leverageSelect = document.getElementById('leverageSelect');
+    const usdtInput = document.getElementById('usdtInput');
+
+    const symbol = symbolSelect.value;
+    const leverage = leverageSelect.value;
+    const usdtAmount = usdtInput.value;
+
+    const data = {
         symbol: symbol,
         leverage: leverage,
         usdtAmount: usdtAmount
-      };
+    };
 
-      fetch(serverUrl, {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(payload),
-      })
-      .then(response => response.json())
-      .then(data => {
-          console.log('Server Response:', data);
-      })
-      .catch(error => {
-          console.error('Error:', error);
-      });
+    sendRequest('/trade', data);
 
-      usdtInput.value = '';
-    }
+    usdtInput.value = '';
+}
 
-    function sendSl() {
-      const symbolSelect = document.getElementById('sl_symbolSelect');
-      const usdtInput = document.getElementById('sl_usdtInput');
+function sendSl() {
+    const symbolSelect = document.getElementById('sl_symbolSelect');
+    const usdtInput = document.getElementById('sl_usdtInput');
 
-      const sl_symbol = symbolSelect.value;
-      const desired_loss = usdtInput.value;
+    const sl_symbol = symbolSelect.value;
+    const desired_loss = usdtInput.value;
 
-      const serverUrl = 'https://nominally-amused-calf.ngrok-free.app/bot-command';
-      const payload = {
-        command: '/sl',
+    const data = {
         sl_symbol: sl_symbol,
         desired_loss: desired_loss
-      };
+    };
 
-      fetch(serverUrl, {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(payload),
-      })
-      .then(response => response.json())
-      .then(data => {
-          console.log('Server Response:', data);
-      })
-      .catch(error => {
-          console.error('Error:', error);
-      });
+    sendRequest('/sl', data);
 
-      sl_usdtInput.value = '';
-    }
+    sl_usdtInput.value = '';
+}
 
-    function sendTp() {
-      const symbolSelect = document.getElementById('tp_symbolSelect');
-      const usdtInput = document.getElementById('tp_usdtInput');
+function sendTp() {
+    const symbolSelect = document.getElementById('tp_symbolSelect');
+    const usdtInput = document.getElementById('tp_usdtInput');
 
-      const tp_symbol = symbolSelect.value;
-      const desired_profit = usdtInput.value;
+    const tp_symbol = symbolSelect.value;
+    const desired_profit = usdtInput.value;
 
-      const serverUrl = 'https://nominally-amused-calf.ngrok-free.app/bot-command';
-      const payload = {
-        command: '/tp',
+    const data = {
         tp_symbol: tp_symbol,
         desired_profit: desired_profit
-      };
+    };
 
-      fetch(serverUrl, {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(payload),
-      })
-      .then(response => response.json())
-      .then(data => {
-          console.log('Server Response:', data);
-      })
-      .catch(error => {
-          console.error('Error:', error);
-      });
+    sendRequest('/tp', data);
 
-      tp_usdtInput.value = '';
-    }
+    tp_usdtInput.value = '';
+}
 
-    function sendOp() {
-      const serverUrl = 'https://nominally-amused-calf.ngrok-free.app/bot-command';
-      const payload = {
-        command: '/open_positions'
-      };
-
-      fetch(serverUrl, {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(payload),
-      })
-      .then(response => response.json())
-      .then(data => {
-          console.log('Server Response:', data);
-      })
-      .catch(error => {
-          console.error('Error:', error);
-      });
-    }
+function sendOp() {
+    sendRequest('/open_positions', {});
+}
   </script>
 </body>
 </html>
