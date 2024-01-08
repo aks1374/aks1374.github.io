@@ -68,12 +68,23 @@
   <h2>Cancel trade queue</h2>
 
   <div>
-    <label for="symbolSelect">Cancel trade from queue for:</label>
+    <label for="symbolSelect">Cancel trade from queue for</label>
     <select id="c_symbolSelect">
       <option value="BTCUSDT">BTC</option>
       <option value="ETHUSDT">ETH</option>
     </select>
     <button type="button" onclick="sendCanceltrade()">Cancel</button>
+  </div>
+
+  <h2>Markets</h2>
+
+  <div>
+    <label for="symbolSelect">Get the last price of</label>
+    <select id="m_symbolSelect">
+      <option value="BTCUSDT">BTC</option>
+      <option value="ETHUSDT">ETH</option>
+    </select>
+    <button type="button" onclick="sendMarket()">Send</button>
   </div>
 
   <h2>Other options</h2>
@@ -159,14 +170,6 @@ function sendTp() {
     tp_usdtInput.value = '';
 }
 
-function sendOp() {
-    sendRequest('/open_positions', {});
-}
-  
-function sendCancel() {
-    sendRequest('/cancel_open_orders', {});
-}
-  
 function sendCanceltrade() {
     const symbolSelect = document.getElementById('c_symbolSelect');
 
@@ -177,6 +180,26 @@ function sendCanceltrade() {
     };
 
     sendRequest('/cancel_queue_order', data);
+}
+
+function sendMarket() {
+    const symbolSelect = document.getElementById('m_symbolSelect');
+
+    const m_symbol = symbolSelect.value;
+
+    const data = {
+        m_symbol: m_symbol,
+    };
+
+    sendRequest('/market', data);
+}
+
+function sendOp() {
+    sendRequest('/open_positions', {});
+}
+  
+function sendCancel() {
+    sendRequest('/cancel_open_orders', {});
 }
 </script>
 </body>
