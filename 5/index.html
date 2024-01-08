@@ -65,6 +65,18 @@
     <button type="button" onclick="sendTp()">Add</button>
   </div>
 
+  <h2>Cancel trade order</h2>
+
+  <div>
+    <p>Cancel trade from queue for: </p>
+    <label for="symbolSelect">Symbol:</label>
+    <select id="c_symbolSelect">
+      <option value="BTCUSDT">BTC</option>
+      <option value="ETHUSDT">ETH</option>
+    </select>
+    <button type="button" onclick="sendCanceltrade()">Cancel</button>
+  </div>
+
   <h2>Other options</h2>
   <button type="button" onclick="sendOp()">Load open positions</button>
   <button type="button" onclick="sendCancel()">Cancel all open orders</button>
@@ -151,8 +163,21 @@ function sendTp() {
 function sendOp() {
     sendRequest('/open_positions', {});
 }
+  
 function sendCancel() {
     sendRequest('/cancel_open_orders', {});
+}
+  
+function sendCanceltrade() {
+    const symbolSelect = document.getElementById('c_symbolSelect');
+
+    const c_symbol = symbolSelect.value;
+
+    const data = {
+        c_symbol: c_symbol,
+    };
+
+    sendRequest('/cancel_queue_order', data);
 }
 </script>
 </body>
