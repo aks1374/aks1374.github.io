@@ -26,7 +26,7 @@
       <option value="BTCUSDT">BTC</option>
       <option value="ETHUSDT">ETH</option>
     </select>
-    <label for="leverageSelect">Leverage:</label>
+    <label for="leverageSelect">X:</label>
     <select id="leverageSelect">
       <option value="1">1x</option>
       <option value="2">2x</option>
@@ -39,7 +39,7 @@
     <button type="button" onclick="sendTrade()">Set</button>
   </div>
 
-  <h2>SL setting</h2>
+  <h2>Stop-loss setting</h2>
 
   <div>
     <label for="symbolSelect">Symbol:</label>
@@ -47,12 +47,12 @@
       <option value="BTCUSDT">BTC</option>
       <option value="ETHUSDT">ETH</option>
     </select>
-    <label for="usdtInput">Desired loss per usdt:</label>
+    <label for="usdtInput">Desired loss:</label>
     <input type="text" id="sl_usdtInput">
     <button type="button" onclick="sendSl()">Add</button>
   </div>
 
-  <h2>TP setting</h2>
+  <h2>Take-profit setting</h2>
 
   <div>
     <label for="symbolSelect">Symbol:</label>
@@ -60,7 +60,7 @@
       <option value="BTCUSDT">BTC</option>
       <option value="ETHUSDT">ETH</option>
     </select>
-    <label for="usdtInput">Desired loss per usdt:</label>
+    <label for="usdtInput">Desired profit:</label>
     <input type="text" id="tp_usdtInput">
     <button type="button" onclick="sendTp()">Add</button>
   </div>
