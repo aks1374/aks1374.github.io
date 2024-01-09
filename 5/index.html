@@ -110,9 +110,10 @@
   </div>
 
   <h3>Other options</h3>
+  <button type="button" onclick="sendList()">List trade queue</button>
   <button type="button" onclick="sendOp()">Load open positions</button>
   <button type="button" onclick="sendCancelall()">Cancel all open orders</button>
-  <h5>Note that open orders doesn't contain queue orders.</h5>
+  <h5>Note that open orders doesn't contain the trade queue.</h5>
 
 <script>
 function sendRequest(command, data) {
@@ -246,6 +247,10 @@ function sendOp() {
   
 function sendCancelall() {
     sendRequest('/cancel_all_orders', {});
+}
+
+function sendList() {
+    sendRequest('/list', {});
 }
 </script>
 </body>
