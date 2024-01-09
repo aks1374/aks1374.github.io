@@ -18,6 +18,17 @@
   </style>
 </head>
 <body>
+  <h2>Markets</h2>
+
+  <div>
+    <label for="symbolSelect">Get the last price of</label>
+    <select id="m_symbolSelect">
+      <option value="BTCUSDT">BTC</option>
+      <option value="ETHUSDT">ETH</option>
+    </select>
+    <button type="button" onclick="sendMarket()">Send</button>
+  </div>
+  
   <h2>Trade setting</h2>
 
   <div>
@@ -74,17 +85,6 @@
       <option value="ETHUSDT">ETH</option>
     </select>
     <button type="button" onclick="sendCanceltrade()">Cancel</button>
-  </div>
-
-  <h2>Markets</h2>
-
-  <div>
-    <label for="symbolSelect">Get the last price of</label>
-    <select id="m_symbolSelect">
-      <option value="BTCUSDT">BTC</option>
-      <option value="ETHUSDT">ETH</option>
-    </select>
-    <button type="button" onclick="sendMarket()">Send</button>
   </div>
 
   <h2>Other options</h2>
