@@ -87,6 +87,17 @@
     <button type="button" onclick="sendCanceltrade()">Cancel</button>
   </div>
 
+  <h2>Position closing</h2>
+
+  <div>
+    <label for="symbolSelect">Close open position of</label>
+    <select id="close_symbolSelect">
+      <option value="BTCUSDT">BTC</option>
+      <option value="ETHUSDT">ETH</option>
+    </select>
+    <button type="button" onclick="sendClose()">Cancel</button>
+  </div>
+
   <h2>Other options</h2>
   <button type="button" onclick="sendOp()">Load open positions</button>
   <button type="button" onclick="sendCancel()">Cancel all open orders</button>
@@ -192,6 +203,18 @@ function sendMarket() {
     };
 
     sendRequest('/market', data);
+}
+
+function sendClose() {
+    const symbolSelect = document.getElementById('close_symbolSelect');
+
+    const close_symbol = symbolSelect.value;
+
+    const data = {
+        close_symbol: close_symbol,
+    };
+
+    sendRequest('/close', data);
 }
 
 function sendOp() {
