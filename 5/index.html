@@ -29,7 +29,7 @@
     <button type="button" onclick="sendMarket()">Send</button>
   </div>
   
-  <h2>Trade setting</h2>
+  <h3>Trade setting</h3>
 
   <div>
     <label for="symbolSelect">Symbol:</label>
@@ -50,7 +50,7 @@
     <button type="button" onclick="sendTrade()">Set</button>
   </div>
 
-  <h2>Stop-loss setting</h2>
+  <h3>Stop-loss setting</h3>
 
   <div>
     <label for="symbolSelect">Symbol:</label>
@@ -63,7 +63,7 @@
     <button type="button" onclick="sendSl()">Add</button>
   </div>
 
-  <h2>Take-profit setting</h2>
+  <h3>Take-profit setting</h3>
 
   <div>
     <label for="symbolSelect">Symbol:</label>
@@ -76,7 +76,7 @@
     <button type="button" onclick="sendTp()">Add</button>
   </div>
 
-  <h2>Cancel trade queue</h2>
+  <h3>Trade queue cancelling</h3>
 
   <div>
     <label for="symbolSelect">Cancel trade from queue for</label>
@@ -84,10 +84,21 @@
       <option value="BTCUSDT">BTC</option>
       <option value="ETHUSDT">ETH</option>
     </select>
-    <button type="button" onclick="sendCanceltrade()">Cancel</button>
+    <button type="button" onclick="sendCanceltrade()">Cancel trade</button>
   </div>
 
-  <h2>Position closing</h2>
+  <h3>Open orders cancelling</h3>
+
+  <div>
+    <label for="symbolSelect">Cancel trade from queue for</label>
+    <select id="o_symbolSelect">
+      <option value="BTCUSDT">BTC</option>
+      <option value="ETHUSDT">ETH</option>
+    </select>
+    <button type="button" onclick="sendCancelorders()">Cancel orders</button>
+  </div>
+
+  <h3>Position closing</h3>
 
   <div>
     <label for="symbolSelect">Close open position of</label>
@@ -95,12 +106,12 @@
       <option value="BTCUSDT">BTC</option>
       <option value="ETHUSDT">ETH</option>
     </select>
-    <button type="button" onclick="sendClose()">Cancel</button>
+    <button type="button" onclick="sendClose()">Close position</button>
   </div>
 
-  <h2>Other options</h2>
+  <h3>Other options</h3>
   <button type="button" onclick="sendOp()">Load open positions</button>
-  <button type="button" onclick="sendCancel()">Cancel all open orders</button>
+  <button type="button" onclick="sendCancelall()">Cancel all open orders</button>
   <h5>Note that open orders doesn't contain queue orders.</h5>
 
 <script>
@@ -205,6 +216,18 @@ function sendMarket() {
     sendRequest('/market', data);
 }
 
+function sendCancelorders() {
+    const symbolSelect = document.getElementById('o_symbolSelect');
+
+    const o_symbol = symbolSelect.value;
+
+    const data = {
+        o_symbol: o_symbol,
+    };
+
+    sendRequest('/cancel_orders', data);
+}
+  
 function sendClose() {
     const symbolSelect = document.getElementById('close_symbolSelect');
 
@@ -221,8 +244,8 @@ function sendOp() {
     sendRequest('/open_positions', {});
 }
   
-function sendCancel() {
-    sendRequest('/cancel_open_orders', {});
+function sendCancelall() {
+    sendRequest('/cancel_all_orders', {});
 }
 </script>
 </body>
