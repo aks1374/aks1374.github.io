@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="icon.png" type="image/x-icon">
+    <title>Crypto Trader</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="section">
+            <div class="section-title">Markets</div>
+            <div class="input-group">
+                <span for="symbolSelect">Get the last price of</span>
+                <select id="m_symbolSelect">
+                    <option value="BTCUSDT">BTC</option>
+                    <option value="ETHUSDT">ETH</option>
+                    <option value="BNBUSDT">BNB</option>
+                </select>
+            </div>
+            <div class="button-container">
+                <button class="button" onclick="sendMarket()">Send</button>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-title">Trade Setting</div>
+            <div class="input-group">
+                <span for="symbolSelect">Symbol</span>
+                <select id="symbolSelect">
+                    <option value="BTCUSDT">BTC</option>
+                    <option value="ETHUSDT">ETH</option>
+                    <option value="BNBUSDT">BNB</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <span for="leverageSelect">Leverage</span>
+                <select id="leverageSelect">
+                    <option value="1x">1x</option>
+                    <option value="2x">2x</option>
+                    <option value="3x">3x</option>
+                    <option value="4x">4x</option>
+                    <option value="5x">5x</option>
+                    <option value="6x">6x</option>
+                    <option value="7x">7x</option>
+                    <option value="8x">8x</option>
+                    <option value="9x">9x</option>
+                    <option value="10x">10x</option>
+                    <option value="11x">11x</option>
+                    <option value="12x">12x</option>
+                    <option value="13x">13x</option>
+                    <option value="14x">14x</option>
+                    <option value="15x">15x</option>
+                    <option value="16x">16x</option>
+                    <option value="17x">17x</option>
+                    <option value="18x">18x</option>
+                    <option value="19x">19x</option>
+                    <option value="20x">20x</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <span for="usdtInput">Amount</span>
+                <input type="text" placeholder="0.00" id="usdtInput">
+            </div>
+            <div class="button-container">
+                <button class="button" onclick="sendTrade()">Set</button>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-title">Stop Loss Setting</div>
+            <div class="input-group">
+                <span for="symbolSelect">Symbol</span>
+                <select id="sl_symbolSelect">
+                    <option value="BTCUSDT">BTC</option>
+                    <option value="ETHUSDT">ETH</option>
+                    <option value="BNBUSDT">BNB</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <span for="usdtInput">Desired Loss</span>
+                <input type="text" placeholder="0.00" id="sl_usdtInput">
+            </div>
+            <div class="button-container">
+                <button class="button" onclick="sendSl()">Add</button>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-title">Take Profit Setting</div>
+            <div class="input-group">
+                <span for="symbolSelect">Symbol</span>
+                <select id="tp_symbolSelect">
+                    <option value="BTCUSDT">BTC</option>
+                    <option value="ETHUSDT">ETH</option>
+                    <option value="BNBUSDT">BNB</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <span for="usdtInput">Desired Profit</span>
+                <input type="text" placeholder="0.00" id="tp_usdtInput">
+            </div>
+            <div class="button-container">
+                <button class="button" onclick="sendTp()">Add</button>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-title">Trade Queue Cancelling</div>
+            <div class="input-group">
+                <span for="symbolSelect">Cancel queued trade of</span>
+                <select id="ct_symbolSelect">
+                    <option value="BTCUSDT">BTC</option>
+                    <option value="ETHUSDT">ETH</option>
+                    <option value="BNBUSDT">BNB</option>
+                </select>
+            </div>
+            <div class="button-container">
+                <button class="button" onclick="sendCanceltrade()">Cancel Trade</button>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-title">Open Orders Cancelling</div>
+            <div class="input-group">
+                <span for="symbolSelect">Cancel open orders for</span>
+                <select id="c_symbolSelect">
+                    <option value="BTCUSDT">BTC</option>
+                    <option value="ETHUSDT">ETH</option>
+                    <option value="BNBUSDT">BNB</option>
+                </select>
+            </div>
+            <div class="button-container">
+                <button class="button" onclick="sendCancelorders()">Cancel Orders</button>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-title">Position Closing</div>
+            <div class="input-group">
+                <span for="symbolSelect">Close open position of</span>
+                <select id="close_symbolSelect">
+                    <option value="BTCUSDT">BTC</option>
+                    <option value="ETHUSDT">ETH</option>
+                    <option value="BNBUSDT">BNB</option>
+                </select>
+            </div>
+            <div class="button-container">
+                <button class="button" onclick="sendClose()">Close Position</button>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-title">Other Options</div>
+            <div class="button-container">
+                <button class="button button-blue" onclick="sendList()">List Trade Queue</button>
+            </div>
+            <div class="button-container">
+                <button class="button button-blue" onclick="sendOp()">Load Open Positions</button>
+            </div>
+            <div class="button-container">
+                <button class="button button-red" onclick="sendCancelall()">Cancel All Open Orders</button>
+                <h6 style="text-align: center;">Note that open orders do not contain the trade queue.</h6>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
+        <script src="script.js"></script>
+    </div>
+</body>
+
+</html>
