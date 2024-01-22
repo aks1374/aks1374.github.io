@@ -1,5 +1,5 @@
 function sendRequest(command, data) {
-    const serverUrl='https://82.24.140.107:46577/bot-command';
+    const serverUrl='https://frank-epic-sponge.ngrok-free.app/bot-command';
     const payload= {
         command: command,
             ...data
