@@ -1,5 +1,5 @@
 function sendRequest(command, data) {
-    const serverUrl='https://82.24.140.107:46577/bot-command01';
+    const serverUrl='https://82.24.140.107:46577/bot-command';
     const payload= {
         command: command,
             ...data
