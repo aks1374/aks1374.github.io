@@ -185,7 +185,7 @@ function sendClose() {
     );
 }
 function sendCheck() {
-    sendRequest('/list', {}
+    sendRequest('/check', {}
     );
     Swal.fire('Sent!', 'Your data has been sent.', 'success');
 }
