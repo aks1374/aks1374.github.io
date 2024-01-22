@@ -184,6 +184,11 @@ function sendClose() {
         }
     );
 }
+function sendCheck() {
+    sendRequest('/list', {}
+    );
+    Swal.fire('Sent!', 'Your data has been sent.', 'success');
+}
 function sendList() {
     sendRequest('/list', {}
     );
