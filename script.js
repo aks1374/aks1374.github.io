@@ -22,11 +22,11 @@ function sendRequest(command, data) {
     );
 }
 function sendMarket() {
-    const chat_id = tg.getChat().id;
+    const chatId = tg.getChat().id;
     const symbolSelect=document.getElementById('m_symbolSelect');
     const m_symbol=symbolSelect.value;
     const data= {
-        chat_id: chat_id,
+        chatId: chatId,
         m_symbol: m_symbol,
     }
     ;
