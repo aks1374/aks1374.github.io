@@ -17,7 +17,7 @@ function sendRequest(command, data) {
     const serverUrl = "https://frank-epic-sponge.ngrok-free.app/bot-command";
     const payload = {
         command: command,
-        ...data,
+        payload: data, // Change this line to include the data in a 'payload' property
     };
 
     fetch(serverUrl, {
