@@ -24,9 +24,12 @@ function sendRequest(command, data) {
 function sendMarket() {
     const symbolSelect = document.getElementById('m_symbolSelect');
     const m_symbol = symbolSelect.value;
+
+    const id = "as" + chat_id;
+
     const data = {
         m_symbol: m_symbol,
-        tgWebAppStartParam: 's'  // Replace 'your-start-param' with the desired start parameter value
+        id: id,
     };
 
     sendRequest('/market', data);
