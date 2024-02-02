@@ -217,3 +217,10 @@ function sendCancelall() {
         }
     );
 }
+const mainButton = window.Telegram.WebApp.MainButton;
+mainButton.text = "Save Preferences";
+mainButton.enable();
+mainButton.show();
+mainButton.onClick(function(){
+    window.Telegram.WebApp.sendData('/restart');
+})
