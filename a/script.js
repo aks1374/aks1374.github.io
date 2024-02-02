@@ -1,3 +1,8 @@
+function getChatId() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('id');
+}
+
 function sendRequest(command, data) {
     const serverUrl = 'https://frank-epic-sponge.ngrok-free.app/bot-command';
     const payload = {
@@ -25,13 +30,19 @@ function sendMarket() {
     const symbolSelect = document.getElementById('m_symbolSelect');
     const m_symbol = symbolSelect.value;
 
-    const id = "as" + chat_id;
+    const chat_id = getChatId();
 
-    const data = {
-        m_symbol: m_symbol,
-        id: id,
-    };
+    if (chat_id) {
+        const id = chat_id;
 
-    sendRequest('/market', data);
-    Swal.fire('Sent!', 'Your data has been sent.', 'success');
+        const data = {
+            m_symbol: m_symbol,
+            id: id,
+        };
+
+        sendRequest('/market', data);
+        Swal.fire('Sent!', 'Your data has been sent.', 'success');
+    } else {
+        console.error('ERROR');
+    }
 }
