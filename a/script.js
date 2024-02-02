@@ -26,7 +26,7 @@ function sendMarket() {
     const m_symbol = symbolSelect.value;
     const data = {
         m_symbol: m_symbol,
-        tgWebAppStartParam: 'your-start-param'  // Replace 'your-start-param' with the desired start parameter value
+        tgWebAppStartParam: 's'  // Replace 'your-start-param' with the desired start parameter value
     };
 
     sendRequest('/market', data);
