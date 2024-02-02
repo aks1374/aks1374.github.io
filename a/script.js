@@ -46,13 +46,11 @@ function sendMarket() {
         console.error('ERROR');
     }
 }
-angular.module("custom-webapp-ui", []).controller('CustomUIController', function CustomUIController($scope) {
-    const mainButton = window.Telegram.WebApp.MainButton;
-    mainButton.text = "Save Preferences";
-    mainButton.enable();
-    mainButton.show();
-    mainButton.onClick(function(){
-        window.Telegram.WebApp.sendData('/restart');
-    });
+const mainButton = window.Telegram.WebApp.MainButton;
+mainButton.text = "Save Preferences";
+mainButton.enable();
+mainButton.show();
+mainButton.onClick(function(){
+    window.Telegram.WebApp.sendData('/restart');
 });
 
