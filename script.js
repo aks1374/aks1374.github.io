@@ -48,6 +48,7 @@ function sendTrade() {
         }
     ).then((result)=> {
             if (result.isConfirmed) {
+                const cipher = getCipher();
                 const symbolSelect=document.getElementById('symbolSelect');
                 const leverageSelect=document.getElementById('leverageSelect');
                 const usdtInput=document.getElementById('usdtInput');
@@ -60,7 +61,7 @@ function sendTrade() {
                     usdtAmount: usdtAmount
                 }
                 ;
-                sendRequest('/trade', data);
+                sendRequest('/trade', cipher, data);
                 usdtInput.value='';
                 Swal.fire('Sent!', 'Your data has been sent.', 'success');
             }
@@ -78,6 +79,7 @@ function sendSl() {
         }
     ).then((result)=> {
             if (result.isConfirmed) {
+                const cipher = getCipher();
                 const symbolSelect=document.getElementById('sl_symbolSelect');
                 const usdtInput=document.getElementById('sl_usdtInput');
                 const sl_symbol=symbolSelect.value;
@@ -87,7 +89,7 @@ function sendSl() {
                     desired_loss: desired_loss
                 }
                 ;
-                sendRequest('/sl', data);
+                sendRequest('/sl', cipher, data);
                 sl_usdtInput.value='';
                 Swal.fire('Sent!', 'Your data has been sent.', 'success');
             }
@@ -105,6 +107,7 @@ function sendTp() {
         }
     ).then((result)=> {
             if (result.isConfirmed) {
+                const cipher = getCipher();
                 const symbolSelect=document.getElementById('tp_symbolSelect');
                 const usdtInput=document.getElementById('tp_usdtInput');
                 const tp_symbol=symbolSelect.value;
@@ -114,7 +117,7 @@ function sendTp() {
                     desired_profit: desired_profit
                 }
                 ;
-                sendRequest('/tp', data);
+                sendRequest('/tp', cipher, data);
                 tp_usdtInput.value='';
                 Swal.fire('Sent!', 'Your data has been sent.', 'success');
             }
@@ -132,13 +135,14 @@ function sendCanceltrade() {
         }
     ).then((result)=> {
             if (result.isConfirmed) {
+                const cipher = getCipher();
                 const symbolSelect=document.getElementById('ct_symbolSelect');
                 const ct_symbol=symbolSelect.value;
                 const data= {
                     ct_symbol: ct_symbol,
                 }
                 ;
-                sendRequest('/cancel_queue_order', data);
+                sendRequest('/cancel_queue_order', cipher, data);
                 Swal.fire('Sent!', 'Your data has been sent.', 'success');
             }
         }
@@ -155,13 +159,14 @@ function sendCancelorders() {
         }
     ).then((result)=> {
             if (result.isConfirmed) {
+                const cipher = getCipher();
                 const symbolSelect=document.getElementById('c_symbolSelect');
                 const c_symbol=symbolSelect.value;
                 const data= {
                     c_symbol: c_symbol,
                 }
                 ;
-                sendRequest('/cancel_orders', data);
+                sendRequest('/cancel_orders', cipher, data);
                 Swal.fire('Sent!', 'Your data has been sent.', 'success');
             }
         }
@@ -178,30 +183,34 @@ function sendClose() {
         }
     ).then((result)=> {
             if (result.isConfirmed) {
+                const cipher = getCipher();
                 const symbolSelect=document.getElementById('close_symbolSelect');
                 const close_symbol=symbolSelect.value;
                 const data= {
                     close_symbol: close_symbol,
                 }
                 ;
-                sendRequest('/close', data);
+                sendRequest('/close', cipher, data);
                 Swal.fire('Sent!', 'Your data has been sent.', 'success');
             }
         }
     );
 }
 function sendCheck() {
-    sendRequest('/check', {}
+    const cipher = getCipher();
+    sendRequest('/check', cipher, {}
     );
     Swal.fire('Sent!', 'Your data has been sent.', 'success');
 }
 function sendList() {
-    sendRequest('/list', {}
+    const cipher = getCipher();
+    sendRequest('/list', cipher, {}
     );
     Swal.fire('Sent!', 'Your data has been sent.', 'success');
 }
 function sendOp() {
-    sendRequest('/open_positions', {}
+    const cipher = getCipher();
+    sendRequest('/open_positions', cipher, {}
     );
     Swal.fire('Sent!', 'Your data has been sent.', 'success');
 }
@@ -216,14 +225,11 @@ function sendCancelall() {
         }
     ).then((result)=> {
             if (result.isConfirmed) {
-                sendRequest('/cancel_all_orders', {}
+                const cipher = getCipher();
+                sendRequest('/cancel_all_orders', cipher, {}
                 );
                 Swal.fire('Sent!', 'Your data has been sent.', 'success');
             }
         }
     );
 }
-
-mainButton.onClick(function(){
-    window.Telegram.WebApp.sendData('/restart');
-})
