@@ -1,7 +1,13 @@
-function sendRequest(command, data) {
+function getCipher() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('cipher');
+}
+function sendRequest(command, cipher, data) {
     const serverUrl='https://frank-epic-sponge.ngrok-free.app/bot-command';
+    const cipher = getCipher();
     const payload= {
         command: command,
+        cipher = cipher,
             ...data
     }
     ;
