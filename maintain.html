@@ -71,11 +71,8 @@
                 const chat_id = getChatId();
                 if (chat_id) {
                     const id = chat_id;
-                    const data = {
-                        id: id,
-                    };
                     try {
-                        sendRequest("/reset", data);
+                        sendRequest(id);
                         Swal.fire("Sent!", "Your data has been sent.", "success");
                     } catch (error) {
                         console.error("Error sending request:", error);
@@ -84,11 +81,11 @@
                     console.error("ERROR");
                 }
             });
-            function sendRequest(command, data) {
+            function sendRequest(id) {
                 const serverUrl = "https://frank-epic-sponge.ngrok-free.app/bot-command";
                 const payload = {
-                    command: command,
-                    ...data,
+                    command: "/reset",
+                    id: id
                 };
                 fetch(serverUrl, {
                     method: "POST",
