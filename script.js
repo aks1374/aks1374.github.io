@@ -237,6 +237,7 @@ const mainButton = window.Telegram.WebApp.MainButton;
 mainButton.text = "Close the App";
 mainButton.enable();
 mainButton.show();
-mainButton.onClick( function () {
+mainButton.onClick(function () {
     window.Telegram.WebApp.close();
-)};
+});
+
