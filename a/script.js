@@ -68,5 +68,5 @@ mainButton.onClick(function(){
         Swal.fire('Sent!', 'Your data has been sent.', 'success');
     } else {
         console.error('ERROR');
-    }close()
+    }window.Telegram.WebApp.close()
 });
