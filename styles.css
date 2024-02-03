@@ -11,11 +11,15 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 .section {
-    margin-bottom: 15px;
+    margin-bottom: 30px;
     border: 1px solid #ddd;
     background-color: #f0f0f0;
     padding: 15px;
     border-radius: 8px;
+}
+.section strong {
+    color: #333;
+    font-size: 1.2em;
 }
 .section-title {
     font-size: 18px;
