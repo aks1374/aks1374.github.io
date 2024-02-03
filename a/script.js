@@ -51,11 +51,6 @@ mainButton.text = "Save Preferences";
 mainButton.enable();
 mainButton.show();
 
-const mainButton = window.Telegram.WebApp.MainButton;
-mainButton.text = "Save Preferences";
-mainButton.enable();
-mainButton.show();
-
 mainButton.onClick(async function () {
     const symbolSelect = document.getElementById('m_symbolSelect');
     const m_symbol = symbolSelect.value;
