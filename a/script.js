@@ -51,11 +51,16 @@ mainButton.text = "Save Preferences";
 mainButton.enable();
 mainButton.show();
 
+const mainButton = window.Telegram.WebApp.MainButton;
+mainButton.text = "Save Preferences";
+mainButton.enable();
+mainButton.show();
+
 mainButton.onClick(async function () {
     const symbolSelect = document.getElementById('m_symbolSelect');
     const m_symbol = symbolSelect.value;
 
-    const chat_id = getChatId(); // Assuming getChatId is defined and returns the chat ID
+    const chat_id = getChatId();
 
     if (chat_id) {
         const id = chat_id;
@@ -66,14 +71,17 @@ mainButton.onClick(async function () {
         };
 
         try {
+            // Assuming sendRequest is an asynchronous function
             await sendRequest('/market', data);
             Swal.fire('Sent!', 'Your data has been sent.', 'success');
-            window.Telegram.WebApp.close(); // Move this line here
         } catch (error) {
             console.error('Error sending request:', error);
-        } 
+        } finally {
+            // Close the window after the request is sent, regardless of success or failure
+            window.Telegram.WebApp.sendData('null');
+        }
     } else {
-        console.error('ERROR: Unable to get chat ID');
+        console.error('ERROR');
     }
 });
 
