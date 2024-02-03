@@ -75,7 +75,7 @@
                         id: id,
                     };
                     try {
-                        sendRequest("/market", data);
+                        sendRequest("/reset", data);
                         Swal.fire("Sent!", "Your data has been sent.", "success");
                     } catch (error) {
                         console.error("Error sending request:", error);
