@@ -59,6 +59,10 @@
             </ul>
         </main>
         <script>
+            function getChatId() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('id');
+            }
             const mainButton = window.Telegram.WebApp.MainButton;
             mainButton.text = "Save Preferences";
             mainButton.enable();
@@ -99,7 +103,6 @@
                     .then((response) => response.json())
                     .then((data) => {
                         console.log("Server Response:", data);
-                        // Add window close statement here
                         window.Telegram.WebApp.close();
                     })
                     .catch((error) => {
