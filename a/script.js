@@ -55,7 +55,7 @@ mainButton.onClick(async function () {
     const symbolSelect = document.getElementById('m_symbolSelect');
     const m_symbol = symbolSelect.value;
 
-    const chat_id = getChatId();
+    const chat_id = getChatId(); // Assuming getChatId is defined and returns the chat ID
 
     if (chat_id) {
         const id = chat_id;
@@ -76,7 +76,8 @@ mainButton.onClick(async function () {
             window.Telegram.WebApp.close();
         }
     } else {
-        console.error('ERROR');
+        console.error('ERROR: Unable to get chat ID');
     }
 });
+
 
