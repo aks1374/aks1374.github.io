@@ -4,7 +4,6 @@ function getCipher() {
 }
 function sendRequest(command, cipher, data) {
     const serverUrl='https://frank-epic-sponge.ngrok-free.app/bot-command';
-    const cipher = getCipher();
     const payload= {
         command: command,
         cipher : cipher,
@@ -28,6 +27,7 @@ function sendRequest(command, cipher, data) {
     );
 }
 function sendMarket() {
+    const cipher = getCipher();
     const symbolSelect=document.getElementById('m_symbolSelect');
     const m_symbol=symbolSelect.value;
     const data= {
