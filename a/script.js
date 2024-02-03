@@ -50,7 +50,7 @@ const mainButton = window.Telegram.WebApp.MainButton;
 mainButton.text = "Save Preferences";
 mainButton.enable();
 mainButton.show();
-mainButton.onClick(function(){
+mainButton.onClick(async function () {
     const symbolSelect = document.getElementById('m_symbolSelect');
     const m_symbol = symbolSelect.value;
 
@@ -64,9 +64,15 @@ mainButton.onClick(function(){
             id: id,
         };
 
-        sendRequest('/market', data);
-        Swal.fire('Sent!', 'Your data has been sent.', 'success');
+        try {
+            await sendRequest('/market', data);
+            Swal.fire('Sent!', 'Your data has been sent.', 'success');
+        } catch (error) {
+            console.error('Error sending request:', error);
+        } finally {
+            window.Telegram.WebApp.close();
+        }
     } else {
         console.error('ERROR');
     }
-}window.Telegram.WebApp.close(););
+});
