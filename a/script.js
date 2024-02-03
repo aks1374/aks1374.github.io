@@ -50,7 +50,17 @@ const mainButton = window.Telegram.WebApp.MainButton;
 mainButton.text = "Save Preferences";
 mainButton.enable();
 mainButton.show();
-mainButton.onClick(function(){
-    window.Telegram.WebApp.sendData('/restart');
+mainButton.onClick(function() {
+    // Send a request to restart the bot
+    fetch('/restart', {
+        method: 'POST',
+    })
+    .then(response => {
+        // Handle the response if needed
+        console.log('Bot restart request sent');
+    })
+    .catch(error => {
+        // Handle any errors that occur during the request
+        console.error('Failed to send bot restart request:', error);
+    });
 });
-
