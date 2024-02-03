@@ -66,17 +66,37 @@ mainButton.onClick( function () {
         };
 
         try {
-            sendRequest('/market', data);
+            sendRequest2('/market', data);
             Swal.fire('Sent!', 'Your data has been sent.', 'success');
         } catch (error) {
             console.error('Error sending request:', error);
-        } finally {
-            closeApp();
         }
     } else {
         console.error('ERROR');
     }
 });
-async function closeApp() {
-    await window.Telegram.WebApp.close();
+
+function sendRequest2(command, data) {
+    const serverUrl = 'https://frank-epic-sponge.ngrok-free.app/bot-command';
+    const payload = {
+        command: command,
+        ...data
+    };
+
+    fetch(serverUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Server Response:', data);
+        // Add window close statement here
+        window.Telegram.WebApp.close();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 }
