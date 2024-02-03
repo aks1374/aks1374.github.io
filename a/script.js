@@ -51,5 +51,5 @@ mainButton.text = "Save Preferences";
 mainButton.enable();
 mainButton.show();
 mainButton.onClick(function(){
-    window.Telegram.WebApp.sendCommand('/restart');
+    PuzzleBot.sendCommand('/restart');
 });
