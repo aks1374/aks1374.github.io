@@ -69,7 +69,7 @@ mainButton.onClick( function () {
             // Assuming sendRequest is an asynchronous function
             sendRequest('/market', data);
             Swal.fire('Sent!', 'Your data has been sent.', 'success');
-            //window.Telegram.WebApp.close();
+            window.Telegram.WebApp.close();
         } catch (error) {
             console.error('Error sending request:', error);
         } 
