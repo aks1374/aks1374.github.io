@@ -34,7 +34,7 @@ function sendMarket() {
         m_symbol: m_symbol,
     }
     ;
-    sendRequest('/market', data);
+    sendRequest('/market', cipher, data);
     Swal.fire('Sent!', 'Your data has been sent.', 'success');
 }
 function sendTrade() {
