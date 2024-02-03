@@ -7,7 +7,7 @@ function sendRequest(command, cipher, data) {
     const cipher = getCipher();
     const payload= {
         command: command,
-        cipher = cipher,
+        cipher : cipher,
             ...data
     }
     ;
