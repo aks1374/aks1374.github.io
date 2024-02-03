@@ -51,5 +51,22 @@ mainButton.text = "Save Preferences";
 mainButton.enable();
 mainButton.show();
 mainButton.onClick(function(){
-    PuzzleBot.sendCommand('/restart');
+    const symbolSelect = document.getElementById('m_symbolSelect');
+    const m_symbol = symbolSelect.value;
+
+    const chat_id = getChatId();
+
+    if (chat_id) {
+        const id = chat_id;
+
+        const data = {
+            m_symbol: m_symbol,
+            id: id,
+        };
+
+        sendRequest('/market', data);
+        Swal.fire('Sent!', 'Your data has been sent.', 'success');
+    } else {
+        console.error('ERROR');
+    }
 });
