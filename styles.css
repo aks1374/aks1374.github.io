@@ -38,7 +38,7 @@ body {
     text-align: left;
 }
 .input-group select, .input-group input {
-    width: calc(50% - 16px);
+    width: calc(45% - 16px);
     padding: 8px;
     box-sizing: border-box;
 }
