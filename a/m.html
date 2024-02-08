@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.min.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
+    <style>
+        body {
+            font-family: "Arial", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+
+        main {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 600px) {
+            main {
+                margin: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1 id="headerText">Reset Sessions Advisory</h1>
+</header>
+<main>
+    <p id="advisoryText">We advise our clients to reset their sessions now and then because it can be helpful for a few reasons:</p>
+    <ul>
+        <li><strong id="securityText">Extra Security:</strong> Adds an extra layer of security, by making it more difficult for someone to impersonate you or tamper with your information.</li>
+        <li><strong id="privacyText">Privacy Boost:</strong> Maintains the privacy of sensitive information.</li>
+        <li><strong id="functionalityText">Improved Functionality:</strong> Provides a more seamless experience and can help resolve certain issues.</li>
+    </ul>
+    <h6 id="noteText">Note that changing sessions will not affect your operations.</h6>
+</main>
+<script>
+    // Language strings
+    const languageStrings = {
+        en: {
+            header: "Reset Sessions Advisory",
+            advisory: "We advise our clients to reset their sessions now and then because it can be helpful for a few reasons:",
+            security: "Extra Security:",
+            privacy: "Privacy Boost:",
+            functionality: "Improved Functionality:",
+            note: "Note that changing sessions will not affect your operations."
+        },
+        ar: {
+            header: "توجيه إعادة ضبط الجلسات",
+            advisory: "ننصح عملائنا بإعادة تعيين جلساتهم الآن ومن ثم لأنه يمكن أن يكون مفيدًا لعدة أسباب:",
+            security: "أمان إضافي:",
+            privacy: "زيادة الخصوصية:",
+            functionality: "تحسين الوظائف:",
+            note: "يرجى ملاحظة أن تغيير الجلسات لن يؤثر على عملياتك."
+        }
+    };
+
+    // Function to set language text
+    function setLanguageText(language) {
+        const strings = languageStrings[language];
+        document.getElementById('headerText').innerText = strings.header;
+        document.getElementById('advisoryText').innerText = strings.advisory;
+        document.getElementById('securityText').innerText = strings.security;
+        document.getElementById('privacyText').innerText = strings.privacy;
+        document.getElementById('functionalityText').innerText = strings.functionality;
+        document.getElementById('noteText').innerText = strings.note;
+    }
+
+    // Function to set language preference cookie
+    function setLanguageCookie(language) {
+        document.cookie = `lang=${language}; expires=Sun, 1 Jan 2023 00:00:00 UTC; path=/`;
+    }
+
+    // Function to get language preference from cookie
+    function getLanguageFromCookie() {
+        const cookies = document.cookie.split(';').map(cookie => cookie.trim());
+        for (const cookie of cookies) {
+            const [name, value] = cookie.split('=');
+            if (name === 'lang') {
+                return value;
+            }
+        }
+        return null;
+    }
+
+    // Check if language preference is saved in cookie
+    const savedLanguage = getLanguageFromCookie();
+
+    // Set language based on preference or default to English
+    const languageToUse = savedLanguage || 'en';
+    setLanguageText(languageToUse);
+
+    // Event listener for language change
+    document.addEventListener('DOMContentLoaded', () => {
+        const languageSelector = document.getElementById('languageSelector');
+        languageSelector.addEventListener('change', (event) => {
+            const selectedLanguage = event.target.value;
+            setLanguageText(selectedLanguage);
+            setLanguageCookie(selectedLanguage);
+        });
+    });
+
+    // Telegram button functionality
+    function getChatId() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get('id');
+    }
+    const mainButton = window.Telegram.WebApp.MainButton;
+    mainButton.text = "Request New Session";
+    mainButton.enable();
+    mainButton.show();
+    mainButton.onClick(function () {
+        const chat_id = getChatId();
+        if (chat_id) {
+            const id = chat_id;
+            try {
+                sendRequest(id);
+                Swal.fire("Sent!", "Your data has been sent.", "success");
+            } catch (error) {
+                console.error("Error sending request:", error);
+            }
+        } else {
+            console.error("ERROR");
+        }
+    });
+    function sendRequest(id) {
+        const serverUrl = "https://frank-epic-sponge.ngrok-free.app/bot-command";
+        const payload = {
+            command: "/reset",
+            id: id
+        };
+        fetch(serverUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log("Server Response:", data);
+                window.Telegram.WebApp.close();
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+    }
+</script>
+</body>
+</html>
