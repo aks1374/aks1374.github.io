@@ -3,11 +3,6 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <h1 id="headerText">Sessions Resetting</h1>
-    <select id="languageSelector">
-        <option value="en">English</option>
-        <option value="ar">العربية</option>
-    </select>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.min.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
@@ -24,6 +19,7 @@
             color: #fff;
             text-align: center;
             padding: 1em;
+            direction: rtl; /* Right to left */
         }
 
         main {
@@ -33,11 +29,13 @@
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            direction: rtl; /* Right to left */
         }
 
         ul {
             list-style-type: none;
             padding: 0;
+            text-align: right; /* Right-align list items */
         }
 
         li {
@@ -53,16 +51,20 @@
 </head>
 <body>
 <header>
-    <h1 id="headerText">Reset Sessions Advisory</h1>
+    <h1 id="headerText">نصيحة إعادة تعيين الجلسات</h1>
+    <select id="languageSelector">
+        <option value="en">English</option>
+        <option value="ar">العربية</option>
+    </select>
 </header>
 <main>
-    <p id="advisoryText">We advise our clients to reset their sessions now and then because it can be helpful for a few reasons:</p>
+    <p id="advisoryText">ننصح عملائنا بإعادة تعيين جلساتهم الآن ومن ثم لأنه يمكن أن يكون مفيدًا لعدة أسباب:</p>
     <ul>
-        <li><strong id="securityText">Extra Security:</strong> Adds an extra layer of security, by making it more difficult for someone to impersonate you or tamper with your information.</li>
-        <li><strong id="privacyText">Privacy Boost:</strong> Maintains the privacy of sensitive information.</li>
-        <li><strong id="functionalityText">Improved Functionality:</strong> Provides a more seamless experience and can help resolve certain issues.</li>
+        <li><strong id="securityText">أمان إضافي:</strong> يضيف طبقة إضافية من الأمان، عن طريق جعل الأمر أكثر صعوبة بالنسبة لشخص ما لاختراقك أو التلاعب بمعلوماتك.</li>
+        <li><strong id="privacyText">زيادة الخصوصية:</strong> يحافظ على خصوصية المعلومات الحساسة.</li>
+        <li><strong id="functionalityText">تحسين الوظائف:</strong> يوفر تجربة أكثر سلاسة ويمكن أن يساعد في حل بعض المشاكل.</li>
     </ul>
-    <h6 id="noteText">Note that changing sessions will not affect your operations.</h6>
+    <h6 id="noteText">يرجى ملاحظة أن تغيير الجلسات لن يؤثر على عملياتك.</h6>
 </main>
 <script>
     // Language strings
@@ -76,7 +78,7 @@
             note: "Note that changing sessions will not affect your operations."
         },
         ar: {
-            header: "توجيه إعادة ضبط الجلسات",
+            header: "نصيحة إعادة تعيين الجلسات",
             advisory: "ننصح عملائنا بإعادة تعيين جلساتهم الآن ومن ثم لأنه يمكن أن يكون مفيدًا لعدة أسباب:",
             security: "أمان إضافي:",
             privacy: "زيادة الخصوصية:",
