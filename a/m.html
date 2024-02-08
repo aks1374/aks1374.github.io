@@ -103,13 +103,15 @@
         document.getElementById('functionalityText').innerText = strings.functionality;
         document.getElementById('noteText').innerText = strings.note;
 
-        // Hide elements not in the selected language
-        const allElements = document.querySelectorAll('.language-dependent');
+        // Hide all language elements
+        const allElements = document.querySelectorAll('.language-text');
         allElements.forEach(element => {
             element.style.display = 'none';
         });
-        const elementsToShow = document.querySelectorAll(`.${language}-text`);
-        elementsToShow.forEach(element => {
+
+        // Show elements for the selected language
+        const languageElements = document.querySelectorAll(`.${language}-text`);
+        languageElements.forEach(element => {
             element.style.display = 'block';
         });
     }
