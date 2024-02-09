@@ -175,6 +175,7 @@
         const languageSelector = document.getElementById('language-selector');
         const selectedLanguage = languageSelector.value;
         setLanguage(selectedLanguage);
+        translateContent(selectedLanguage);
     }
 
     const mainButton = window.Telegram.WebApp.MainButton;
