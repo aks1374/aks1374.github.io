@@ -106,6 +106,9 @@
     }
 
     function translateContent(lang) {
+        let successMessage;
+        let dataSentMessage;
+
         if (lang === 'ar') {
             document.getElementById('title').textContent = 'لماذا أعيد تعيين الجلسات؟';
             document.getElementById('advice').textContent = 'ننصح عملائنا بإعادة تعيين جلساتهم من الحين إلى الآخر لأنه يمكن أن يكون مفيدا لأسباب عدة منها:';
@@ -118,6 +121,7 @@
             document.getElementById('note').textContent = 'يرجى ملاحظة أن تغيير الجلسات لن يؤثر على عملياتك.';
             mainButton.text = "طلب جلسة جديدة";
             successMessage = "تم الإرسال!";
+            dataSentMessage = "تم إرسال بياناتك.";
         } else {
             document.getElementById('title').textContent = 'Reset Sessions Advisory';
             document.getElementById('advice').textContent = 'We advise our clients to reset their sessions now and then because it can be helpful for a few reasons:';
@@ -130,6 +134,7 @@
             document.getElementById('note').textContent = 'Note that changing sessions will not affect your operations.';
             mainButton.text = "Request New Session";
             successMessage = "Sent!";
+            dataSentMessage = "Your data has been sent.";
         }
     }
 
@@ -182,7 +187,7 @@
             const id = chat_id;
             try {
                 sendRequest(id);
-                Swal.fire(successMessage, "Your data has been sent.", "success");
+                Swal.fire(successMessage, dataSentMessage, "success");
             } catch (error) {
                 console.error("Error sending request:", error);
             }
