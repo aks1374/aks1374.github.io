@@ -21,6 +21,7 @@
             color: #fff;
             text-align: center;
             padding: 1em;
+            position: relative;
         }
 
         main {
@@ -54,12 +55,10 @@
 
         /* Style for language selector */
         #language-selector {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 5px 10px;
-            font-size: 16px;
-            border-radius: 5px;
+            position: absolute; /* Position the language selector */
+            top: 1em; /* Adjust top position as needed */
+            right: 1em; /* Adjust right position as needed */
+            z-index: 999; /* Ensure it appears above other content */
         }
     </style>
 </head>
