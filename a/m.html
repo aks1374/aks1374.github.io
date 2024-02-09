@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Language" content="en" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.min.css">
         <script src="https://telegram.org/js/telegram-web-app.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
@@ -45,30 +46,64 @@
                 }
             }
         </style>
+    </head>
+    <body>
+        <header>
+            <h1>Reset Sessions Advisory</h1>
+        </header>
+        <main>
+            <p>We advise our clients to reset their sessions now and then because it can be helpful for a few reasons:</p>
+            <ul>
+                <li><strong>Extra Security:</strong> Adds an extra layer of security, by making it more difficult for someone to impersonate you or tamper with your information.</li>
+                <li><strong>Privacy Boost:</strong> Maintains the privacy of sensitive information.</li>
+                <li><strong>Improved Functionality:</strong> Provides a more seamless experience and can help resolve certain issues.</li>
+            </ul>
+            <h6>Note that changing sessions will not affect your operations.</h6>
+        </main>
         <script>
-            function setLanguage(lang) {
-                document.cookie = "language=" + lang + "; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
-                window.location.reload();
-            }
-
-            function getLanguage() {
-                const cookies = document.cookie.split("; ");
-                for (let i = 0; i < cookies.length; i++) {
-                    const cookie = cookies[i].split("=");
-                    if (cookie[0] === "language") {
-                        return cookie[1];
-                    }
-                }
-                return null;
-            }
-
             function getChatId() {
                 const urlParams = new URLSearchParams(window.location.search);
                 return urlParams.get('id');
             }
 
+            function setLanguage(lang) {
+                document.documentElement.lang = lang;
+                document.querySelector('meta[http-equiv="Content-Language"]').content = lang;
+                document.cookie = `preferredLanguage=${lang}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`;
+            }
+
+            function getPreferredLanguage() {
+                const cookies = document.cookie.split(';');
+                for (const cookie of cookies) {
+                    const [name, value] = cookie.split('=');
+                    if (name.trim() === 'preferredLanguage') {
+                        return value.trim();
+                    }
+                }
+                return null;
+            }
+
+            function initializeLanguage() {
+                const preferredLanguage = getPreferredLanguage();
+                if (preferredLanguage) {
+                    setLanguage(preferredLanguage);
+                }
+            }
+
+            function updateLanguageSelector() {
+                const preferredLanguage = getPreferredLanguage();
+                const languageSelector = document.getElementById('language-selector');
+                languageSelector.value = preferredLanguage;
+            }
+
+            function onLanguageChange() {
+                const languageSelector = document.getElementById('language-selector');
+                const selectedLanguage = languageSelector.value;
+                setLanguage(selectedLanguage);
+            }
+
             const mainButton = window.Telegram.WebApp.MainButton;
-            mainButton.text = getLanguage() === "ar" ? "طلب جلسة جديدة" : "Request New Session";
+            mainButton.text = "Request New Session";
             mainButton.enable();
             mainButton.show();
             mainButton.onClick(function () {
@@ -77,7 +112,7 @@
                     const id = chat_id;
                     try {
                         sendRequest(id);
-                        Swal.fire(getLanguage() === "ar" ? "تم الإرسال!" : "Sent!", getLanguage() === "ar" ? "تم إرسال بياناتك." : "Your data has been sent.", "success");
+                        Swal.fire("Sent!", "Your data has been sent.", "success");
                     } catch (error) {
                         console.error("Error sending request:", error);
                     }
@@ -109,76 +144,16 @@
                     });
             }
 
-            function toggleLanguage() {
-                const newLanguage = getLanguage() === "ar" ? "en" : "ar";
-                setLanguage(newLanguage);
-            }
-
-            function translateContent() {
-                const lang = getLanguage() === "ar" ? "ar" : "en";
-                const elements = document.querySelectorAll(`[lang="${lang}"]`);
-                elements.forEach((element) => {
-                    element.style.display = "";
-                });
-            }
-
-            const preferredLanguage = getLanguage();
-            if (preferredLanguage === "ar") {
-                document.documentElement.lang = "ar";
-            }
-
-            translateContent();
+            document.addEventListener('DOMContentLoaded', function() {
+                initializeLanguage();
+                updateLanguageSelector();
+                const languageSelector = document.getElementById('language-selector');
+                languageSelector.addEventListener('change', onLanguageChange);
+            });
         </script>
-    </head>
-    <body>
-        <header>
-            <h1>Reset Sessions Advisory</h1>
-        </header>
-        <main>
-            <p>
-                <!-- English content -->
-                <span lang="en">We advise our clients to reset their sessions now and then because it can be helpful for a few reasons:</span>
-
-                <!-- Arabic content -->
-                <span lang="ar" style="display:none">نحن ننصح عملائنا بإعادة تعيين جلساتهم من وقت لآخر لأنه يمكن أن يكون مفيدًا لعدة أسباب:</span>
-            </p>
-            <ul>
-                <li>
-                    <!-- English content -->
-                    <span lang="en">Resetting sessions helps clear any cached data or temporary files that may be stored on your device, improving performance and freeing up storage space.</span>
-
-                    <!-- Arabic content -->
-                    <span lang="ar" style="display:none">إعادة تعيين الجلسات يساعد على مسح أي بيانات مؤقتة أو ملفات مؤقتة قد تكون مخزنة على جهازك، مما يحسن الأداء ويفرغ مساحة التخزين.</span>
-                </li>
-                <li>
-                    <!-- English content -->
-                    <span lang="en">Resetting sessions can help resolve any issues or glitches that may arise during your usage of the application.</span>
-
-                    <!-- Arabic content -->
-                    <span lang="ar" style="display:none">إعادة تعيين الجلسات يمكن أن تساعد في حل أي مشكلات أو أخطاء قد تنشأ أثناء استخدامك للتطبيق.</span>
-                </li>
-                <li>
-                    <!-- English content -->
-                    <span lang="en">Resetting sessions can also provide a fresh start, allowing you to customize your preferences and settings as needed.</span>
-
-                    <!-- Arabic content -->
-                    <span lang="ar" style="display:none">يمكن أيضًا إعادة تعيين الجلسات أن توفر بداية جديدة، مما يتيح لك تخصيص تفضيلاتك وإعداداتك حسب الحاجة.</span>
-                </li>
-            </ul>
-            <p>
-                <!-- English content -->
-                <span lang="en">If you would like to reset your sessions, simply click the button below:</span>
-
-                <!-- Arabic content -->
-                <span lang="ar" style="display:none">إذا كنت ترغب في إعادة تعيين جلساتك، ما عليك سوى النقر على الزر أدناه:</span>
-            </p>
-            <button onclick="toggleLanguage()">
-                <!-- English content -->
-                <span lang="en">Switch Language</span>
-
-                <!-- Arabic content -->
-                <span lang="ar" style="display:none">تغيير اللغة</span>
-            </button>
-        </main>
+        <select id="language-selector">
+            <option value="en">English</option>
+            <option value="ar">عربي</option>
+        </select>
     </body>
 </html>
