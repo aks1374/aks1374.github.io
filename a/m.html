@@ -34,6 +34,10 @@
             position: relative;
         }
 
+        .list-container {
+            position: relative;
+        }
+
         ul {
             list-style-type: none;
             padding: 0;
@@ -57,9 +61,10 @@
         /* Style for language selector */
         .language-container {
             position: absolute;
-            left: 50%;
-            bottom: 10px;
-            transform: translateX(-50%);
+            left: 0;
+            bottom: -40px; /* Adjust as needed */
+            width: 100%;
+            text-align: center;
         }
     </style>
 </head>
@@ -68,20 +73,22 @@
     <h1 id="title">Reset Sessions Advisory</h1>
 </header>
 <main>
-    <p id="advice">We advise our clients to reset their sessions now and then because it can be helpful for a few reasons:</p>
-    <ul>
-        <li><strong id="extra-security">Extra Security:</strong> <span id="extra-security-desc">Adds an extra layer of security, by making it more difficult for someone to impersonate you or tamper with your information.</span></li>
-        <li><strong id="privacy-boost">Privacy Boost:</strong> <span id="privacy-boost-desc">Maintains the privacy of sensitive information.</span></li>
-        <li><strong id="improved-functionality">Improved Functionality:</strong> <span id="improved-functionality-desc">Provides a more seamless experience and can help resolve certain issues.</span></li>
-    </ul>
-    <h6 id="note">Note that changing sessions will not affect your operations.</h6>
+    <div class="list-container">
+        <p>We advise our clients to reset their sessions now and then because it can be helpful for a few reasons:</p>
+        <ul>
+            <li><strong>Extra Security:</strong> Adds an extra layer of security, by making it more difficult for someone to impersonate you or tamper with your information.</li>
+            <li><strong>Privacy Boost:</strong> Maintains the privacy of sensitive information.</li>
+            <li><strong>Improved Functionality:</strong> Provides a more seamless experience and can help resolve certain issues.</li>
+        </ul>
+        <h6>Note that changing sessions will not affect your operations.</h6>
+    </div>
+    <div class="language-container">
+        <select id="language-selector">
+            <option value="en">English</option>
+            <option value="ar">عربي</option>
+        </select>
+    </div>
 </main>
-<div class="language-container">
-    <select id="language-selector">
-        <option value="en">English</option>
-        <option value="ar">عربي</option>
-    </select>
-</div>
 <script>
     function getChatId() {
         const urlParams = new URLSearchParams(window.location.search);
