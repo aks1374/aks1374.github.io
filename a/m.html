@@ -1,159 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="Content-Language" content="en" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.min.css">
-        <script src="https://telegram.org/js/telegram-web-app.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
-        <style>
-            body {
-                font-family: "Arial", sans-serif;
-                margin: 0;
-                padding: 0;
-                background-color: #f4f4f4;
-            }
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Language" content="en" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.min.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
+    <style>
+        body {
+            font-family: "Arial", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
 
-            header {
-                background-color: #333;
-                color: #fff;
-                text-align: center;
-                padding: 1em;
-            }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
 
+        main {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 600px) {
             main {
-                max-width: 600px;
-                margin: 20px auto;
-                padding: 20px;
-                background-color: #fff;
-                border-radius: 8px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                margin: 10px;
             }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1 id="title">Reset Sessions Advisory</h1>
+</header>
+<main>
+    <p id="advice">We advise our clients to reset their sessions now and then because it can be helpful for a few reasons:</p>
+    <ul>
+        <li><strong id="extra-security">Extra Security:</strong> <span id="extra-security-desc">Adds an extra layer of security, by making it more difficult for someone to impersonate you or tamper with your information.</span></li>
+        <li><strong id="privacy-boost">Privacy Boost:</strong> <span id="privacy-boost-desc">Maintains the privacy of sensitive information.</span></li>
+        <li><strong id="improved-functionality">Improved Functionality:</strong> <span id="improved-functionality-desc">Provides a more seamless experience and can help resolve certain issues.</span></li>
+    </ul>
+    <h6 id="note">Note that changing sessions will not affect your operations.</h6>
+</main>
+<script>
+    function getChatId() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get('id');
+    }
 
-            ul {
-                list-style-type: none;
-                padding: 0;
+    function setLanguage(lang) {
+        document.documentElement.lang = lang;
+        document.querySelector('meta[http-equiv="Content-Language"]').content = lang;
+        document.cookie = `preferredLanguage=${lang}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`;
+        translateContent(lang);
+    }
+
+    function translateContent(lang) {
+        if (lang === 'ar') {
+            document.getElementById('title').textContent = 'تحذير إعادة جلسات الإعادة';
+            document.getElementById('advice').textContent = 'ننصح عملائنا بإعادة جلساتهم الآن ومن ثم لأنه يمكن أن يكون مفيدا لأسباب عدة:';
+            document.getElementById('extra-security').textContent = 'أمان إضافي:';
+            document.getElementById('extra-security-desc').textContent = 'يضيف طبقة إضافية من الأمان، من خلال جعله أكثر صعوبة لشخص ما التنكر لك أو التلاعب بمعلوماتك.';
+            document.getElementById('privacy-boost').textContent = 'دعم الخصوصية:';
+            document.getElementById('privacy-boost-desc').textContent = 'يحافظ على خصوصية المعلومات الحساسة.';
+            document.getElementById('improved-functionality').textContent = 'تحسين الوظائف:';
+            document.getElementById('improved-functionality-desc').textContent = 'يوفر تجربة أكثر سلاسة ويمكن أن يساعد في حل بعض المشاكل.';
+            document.getElementById('note').textContent = 'يرجى ملاحظة أن تغيير الجلسات لن يؤثر على عملياتك.';
+        } else {
+            // English translations (default)
+            document.getElementById('title').textContent = 'Reset Sessions Advisory';
+            document.getElementById('advice').textContent = 'We advise our clients to reset their sessions now and then because it can be helpful for a few reasons:';
+            document.getElementById('extra-security').textContent = 'Extra Security:';
+            document.getElementById('extra-security-desc').textContent = 'Adds an extra layer of security, by making it more difficult for someone to impersonate you or tamper with your information.';
+            document.getElementById('privacy-boost').textContent = 'Privacy Boost:';
+            document.getElementById('privacy-boost-desc').textContent = 'Maintains the privacy of sensitive information.';
+            document.getElementById('improved-functionality').textContent = 'Improved Functionality:';
+            document.getElementById('improved-functionality-desc').textContent = 'Provides a more seamless experience and can help resolve certain issues.';
+            document.getElementById('note').textContent = 'Note that changing sessions will not affect your operations.';
+        }
+    }
+
+    function getPreferredLanguage() {
+        const cookies = document.cookie.split(';');
+        for (const cookie of cookies) {
+            const [name, value] = cookie.split('=');
+            if (name.trim() === 'preferredLanguage') {
+                return value.trim();
             }
+        }
+        return null;
+    }
 
-            li {
-                margin-bottom: 10px;
+    function initializeLanguage() {
+        const preferredLanguage = getPreferredLanguage();
+        if (preferredLanguage) {
+            setLanguage(preferredLanguage);
+        }
+    }
+
+    function updateLanguageSelector() {
+        const preferredLanguage = getPreferredLanguage();
+        const languageSelector = document.getElementById('language-selector');
+        languageSelector.value = preferredLanguage;
+    }
+
+    function onLanguageChange() {
+        const languageSelector = document.getElementById('language-selector');
+        const selectedLanguage = languageSelector.value;
+        setLanguage(selectedLanguage);
+    }
+
+    const mainButton = window.Telegram.WebApp.MainButton;
+    mainButton.text = "Request New Session";
+    mainButton.enable();
+    mainButton.show();
+    mainButton.onClick(function () {
+        const chat_id = getChatId();
+        if (chat_id) {
+            const id = chat_id;
+            try {
+                sendRequest(id);
+                Swal.fire("Sent!", "Your data has been sent.", "success");
+            } catch (error) {
+                console.error("Error sending request:", error);
             }
+        } else {
+            console.error("ERROR");
+        }
+    });
 
-            @media (max-width: 600px) {
-                main {
-                    margin: 10px;
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <header>
-            <h1>Reset Sessions Advisory</h1>
-        </header>
-        <main>
-            <p>We advise our clients to reset their sessions now and then because it can be helpful for a few reasons:</p>
-            <ul>
-                <li><strong>Extra Security:</strong> Adds an extra layer of security, by making it more difficult for someone to impersonate you or tamper with your information.</li>
-                <li><strong>Privacy Boost:</strong> Maintains the privacy of sensitive information.</li>
-                <li><strong>Improved Functionality:</strong> Provides a more seamless experience and can help resolve certain issues.</li>
-            </ul>
-            <h6>Note that changing sessions will not affect your operations.</h6>
-        </main>
-        <script>
-            function getChatId() {
-                const urlParams = new URLSearchParams(window.location.search);
-                return urlParams.get('id');
-            }
+    function sendRequest(id) {
+        const serverUrl = "https://frank-epic-sponge.ngrok-free.app/bot-command";
+        const payload = {
+            command: "/reset",
+            id: id
+        };
+        fetch(serverUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log("Server Response:", data);
+            window.Telegram.WebApp.close();
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+        });
+    }
 
-            function setLanguage(lang) {
-                document.documentElement.lang = lang;
-                document.querySelector('meta[http-equiv="Content-Language"]').content = lang;
-                document.cookie = `preferredLanguage=${lang}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`;
-            }
-
-            function getPreferredLanguage() {
-                const cookies = document.cookie.split(';');
-                for (const cookie of cookies) {
-                    const [name, value] = cookie.split('=');
-                    if (name.trim() === 'preferredLanguage') {
-                        return value.trim();
-                    }
-                }
-                return null;
-            }
-
-            function initializeLanguage() {
-                const preferredLanguage = getPreferredLanguage();
-                if (preferredLanguage) {
-                    setLanguage(preferredLanguage);
-                }
-            }
-
-            function updateLanguageSelector() {
-                const preferredLanguage = getPreferredLanguage();
-                const languageSelector = document.getElementById('language-selector');
-                languageSelector.value = preferredLanguage;
-            }
-
-            function onLanguageChange() {
-                const languageSelector = document.getElementById('language-selector');
-                const selectedLanguage = languageSelector.value;
-                setLanguage(selectedLanguage);
-            }
-
-            const mainButton = window.Telegram.WebApp.MainButton;
-            mainButton.text = "Request New Session";
-            mainButton.enable();
-            mainButton.show();
-            mainButton.onClick(function () {
-                const chat_id = getChatId();
-                if (chat_id) {
-                    const id = chat_id;
-                    try {
-                        sendRequest(id);
-                        Swal.fire("Sent!", "Your data has been sent.", "success");
-                    } catch (error) {
-                        console.error("Error sending request:", error);
-                    }
-                } else {
-                    console.error("ERROR");
-                }
-            });
-
-            function sendRequest(id) {
-                const serverUrl = "https://frank-epic-sponge.ngrok-free.app/bot-command";
-                const payload = {
-                    command: "/reset",
-                    id: id
-                };
-                fetch(serverUrl, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(payload),
-                })
-                    .then((response) => response.json())
-                    .then((data) => {
-                        console.log("Server Response:", data);
-                        window.Telegram.WebApp.close();
-                    })
-                    .catch((error) => {
-                        console.error("Error:", error);
-                    });
-            }
-
-            document.addEventListener('DOMContentLoaded', function() {
-                initializeLanguage();
-                updateLanguageSelector();
-                const languageSelector = document.getElementById('language-selector');
-                languageSelector.addEventListener('change', onLanguageChange);
-            });
-        </script>
-        <select id="language-selector">
-            <option value="en">English</option>
-            <option value="ar">عربي</option>
-        </select>
-    </body>
+    document.addEventListener('DOMContentLoaded', function() {
+        initializeLanguage();
+        updateLanguageSelector();
+        const languageSelector = document.getElementById('language-selector');
+        languageSelector.addEventListener('change', onLanguageChange);
+    });
+</script>
+<select id="language-selector">
+    <option value="en">English</option>
+    <option value="ar">عربي</option>
+</select>
+</body>
 </html>
