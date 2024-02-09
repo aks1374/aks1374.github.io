@@ -13,6 +13,7 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            position: relative;
         }
 
         header {
@@ -50,6 +51,16 @@
         .rtl {
             direction: rtl;
         }
+
+        /* Style for language selector */
+        #language-selector {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 5px 10px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -65,6 +76,10 @@
     </ul>
     <h6 id="note">Note that changing sessions will not affect your operations.</h6>
 </main>
+<select id="language-selector">
+    <option value="en">English</option>
+    <option value="ar">عربي</option>
+</select>
 <script>
     function getChatId() {
         const urlParams = new URLSearchParams(window.location.search);
@@ -187,9 +202,5 @@
         languageSelector.addEventListener('change', onLanguageChange);
     });
 </script>
-<select id="language-selector">
-    <option value="en">English</option>
-    <option value="ar">عربي</option>
-</select>
 </body>
 </html>
