@@ -101,15 +101,16 @@
 
     function translateContent(lang) {
         if (lang === 'ar') {
-            document.getElementById('title').textContent = 'تحذير إعادة جلسات الإعادة';
-            document.getElementById('advice').textContent = 'ننصح عملائنا بإعادة جلساتهم الآن ومن ثم لأنه يمكن أن يكون مفيدا لأسباب عدة:';
+            document.getElementById('title').textContent = 'لماذا أعيد تعيين الجلسات؟';
+            document.getElementById('advice').textContent = 'ننصح عملائنا بإعادة تعيين جلساتهم من الحين إلى الآخر لأنه يمكن أن يكون مفيدا لأسباب عدة منها:';
             document.getElementById('extra-security').textContent = 'أمان إضافي:';
-            document.getElementById('extra-security-desc').textContent = 'يضيف طبقة إضافية من الأمان، من خلال جعله أكثر صعوبة لشخص ما التنكر لك أو التلاعب بمعلوماتك.';
-            document.getElementById('privacy-boost').textContent = 'دعم الخصوصية:';
+            document.getElementById('extra-security-desc').textContent = 'يشكل طبقة إضافية من الأمان، من خلال جعله أكثر صعوبة لشخص ما يريد التنكر أو التلاعب بمعلوماتك.';
+            document.getElementById('privacy-boost').textContent = 'تعزيز الخصوصية:';
             document.getElementById('privacy-boost-desc').textContent = 'يحافظ على خصوصية المعلومات الحساسة.';
             document.getElementById('improved-functionality').textContent = 'تحسين الوظائف:';
             document.getElementById('improved-functionality-desc').textContent = 'يوفر تجربة أكثر سلاسة ويمكن أن يساعد في حل بعض المشاكل.';
             document.getElementById('note').textContent = 'يرجى ملاحظة أن تغيير الجلسات لن يؤثر على عملياتك.';
+            mainButton.text = "طلب جلسة جديدة";
         } else {
             document.getElementById('title').textContent = 'Reset Sessions Advisory';
             document.getElementById('advice').textContent = 'We advise our clients to reset their sessions now and then because it can be helpful for a few reasons:';
@@ -120,6 +121,7 @@
             document.getElementById('improved-functionality').textContent = 'Improved Functionality:';
             document.getElementById('improved-functionality-desc').textContent = 'Provides a more seamless experience and can help resolve certain issues.';
             document.getElementById('note').textContent = 'Note that changing sessions will not affect your operations.';
+            mainButton.text = "Request New Session";
         }
     }
 
