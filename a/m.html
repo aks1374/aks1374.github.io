@@ -106,7 +106,6 @@
     }
 let dataSentMessage;
     function translateContent(lang) {
-        let successMessage;
         
         if (lang === 'ar') {
             document.getElementById('title').textContent = 'لماذا أعيد تعيين الجلسات؟';
@@ -174,7 +173,7 @@ let dataSentMessage;
         const languageSelector = document.getElementById('language-selector');
         const selectedLanguage = languageSelector.value;
         setLanguage(selectedLanguage);
-        translateContent(selectedLanguage);
+        //translateContent(selectedLanguage);
     }
 
     const mainButton = window.Telegram.WebApp.MainButton;
