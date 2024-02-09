@@ -89,7 +89,13 @@
     function setLanguage(lang) {
         document.documentElement.lang = lang;
         document.querySelector('meta[http-equiv="Content-Language"]').content = lang;
+        
+        // Save preferred language in cookies
         document.cookie = `preferredLanguage=${lang}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`;
+        
+        // Save preferred language in local storage
+        localStorage.setItem('preferredLanguage', lang);
+        
         // Toggle 'rtl' class on <html> element
         if (lang === 'ar') {
             document.documentElement.classList.add('rtl');
@@ -126,6 +132,13 @@
     }
 
     function getPreferredLanguage() {
+        // First, check local storage
+        const localStorageLanguage = localStorage.getItem('preferredLanguage');
+        if (localStorageLanguage) {
+            return localStorageLanguage;
+        }
+        
+        // If not found in local storage, check cookies
         const cookies = document.cookie.split(';');
         for (const cookie of cookies) {
             const [name, value] = cookie.split('=');
@@ -133,6 +146,8 @@
                 return value.trim();
             }
         }
+        
+        // Default to null if not found
         return null;
     }
 
