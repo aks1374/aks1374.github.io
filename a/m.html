@@ -182,7 +182,7 @@
             const id = chat_id;
             try {
                 sendRequest(id);
-                Swal.fire("Sent!", "Your data has been sent.", "success");
+                Swal.fire(successMessage, "Your data has been sent.", "success");
             } catch (error) {
                 console.error("Error sending request:", error);
             }
