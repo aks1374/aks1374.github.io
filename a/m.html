@@ -90,6 +90,15 @@
             document.getElementById('improved-functionality').textContent = 'تحسين الوظائف:';
             document.getElementById('improved-functionality-desc').textContent = 'يوفر تجربة أكثر سلاسة ويمكن أن يساعد في حل بعض المشاكل.';
             document.getElementById('note').textContent = 'يرجى ملاحظة أن تغيير الجلسات لن يؤثر على عملياتك.';
+            document.getElementById('title').classList.add('rtl');
+            document.getElementById('advice').classList.add('rtl');
+            document.getElementById('extra-security').classList.add('rtl');
+            document.getElementById('extra-security-desc').classList.add('rtl');
+            document.getElementById('privacy-boost').classList.add('rtl');
+            document.getElementById('privacy-boost-desc').classList.add('rtl');
+            document.getElementById('improved-functionality').classList.add('rtl');
+            document.getElementById('improved-functionality-desc').classList.add('rtl');
+            document.getElementById('note').classList.add('rtl');
         } else {
             // English translations (default)
             document.getElementById('title').textContent = 'Reset Sessions Advisory';
@@ -101,6 +110,16 @@
             document.getElementById('improved-functionality').textContent = 'Improved Functionality:';
             document.getElementById('improved-functionality-desc').textContent = 'Provides a more seamless experience and can help resolve certain issues.';
             document.getElementById('note').textContent = 'Note that changing sessions will not affect your operations.';
+            // Remove 'rtl' class from English elements
+            document.getElementById('title').classList.remove('rtl');
+            document.getElementById('advice').classList.remove('rtl');
+            document.getElementById('extra-security').classList.remove('rtl');
+            document.getElementById('extra-security-desc').classList.remove('rtl');
+            document.getElementById('privacy-boost').classList.remove('rtl');
+            document.getElementById('privacy-boost-desc').classList.remove('rtl');
+            document.getElementById('improved-functionality').classList.remove('rtl');
+            document.getElementById('improved-functionality-desc').classList.remove('rtl');
+            document.getElementById('note').classList.remove('rtl');
         }
     }
 
