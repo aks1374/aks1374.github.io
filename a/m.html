@@ -75,12 +75,17 @@
         document.documentElement.lang = lang;
         document.querySelector('meta[http-equiv="Content-Language"]').content = lang;
         document.cookie = `preferredLanguage=${lang}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`;
+        // Toggle 'rtl' class on <html> element
+        if (lang === 'ar') {
+            document.documentElement.classList.add('rtl');
+        } else {
+            document.documentElement.classList.remove('rtl');
+        }
         translateContent(lang);
     }
 
     function translateContent(lang) {
         if (lang === 'ar') {
-            // Add 'rtl' class to make Arabic text display RTL
             document.getElementById('title').textContent = 'تحذير إعادة جلسات الإعادة';
             document.getElementById('advice').textContent = 'ننصح عملائنا بإعادة جلساتهم الآن ومن ثم لأنه يمكن أن يكون مفيدا لأسباب عدة:';
             document.getElementById('extra-security').textContent = 'أمان إضافي:';
@@ -90,17 +95,7 @@
             document.getElementById('improved-functionality').textContent = 'تحسين الوظائف:';
             document.getElementById('improved-functionality-desc').textContent = 'يوفر تجربة أكثر سلاسة ويمكن أن يساعد في حل بعض المشاكل.';
             document.getElementById('note').textContent = 'يرجى ملاحظة أن تغيير الجلسات لن يؤثر على عملياتك.';
-            document.getElementById('title').classList.add('rtl');
-            document.getElementById('advice').classList.add('rtl');
-            document.getElementById('extra-security').classList.add('rtl');
-            document.getElementById('extra-security-desc').classList.add('rtl');
-            document.getElementById('privacy-boost').classList.add('rtl');
-            document.getElementById('privacy-boost-desc').classList.add('rtl');
-            document.getElementById('improved-functionality').classList.add('rtl');
-            document.getElementById('improved-functionality-desc').classList.add('rtl');
-            document.getElementById('note').classList.add('rtl');
         } else {
-            // English translations (default)
             document.getElementById('title').textContent = 'Reset Sessions Advisory';
             document.getElementById('advice').textContent = 'We advise our clients to reset their sessions now and then because it can be helpful for a few reasons:';
             document.getElementById('extra-security').textContent = 'Extra Security:';
@@ -110,16 +105,6 @@
             document.getElementById('improved-functionality').textContent = 'Improved Functionality:';
             document.getElementById('improved-functionality-desc').textContent = 'Provides a more seamless experience and can help resolve certain issues.';
             document.getElementById('note').textContent = 'Note that changing sessions will not affect your operations.';
-            // Remove 'rtl' class from English elements
-            document.getElementById('title').classList.remove('rtl');
-            document.getElementById('advice').classList.remove('rtl');
-            document.getElementById('extra-security').classList.remove('rtl');
-            document.getElementById('extra-security-desc').classList.remove('rtl');
-            document.getElementById('privacy-boost').classList.remove('rtl');
-            document.getElementById('privacy-boost-desc').classList.remove('rtl');
-            document.getElementById('improved-functionality').classList.remove('rtl');
-            document.getElementById('improved-functionality-desc').classList.remove('rtl');
-            document.getElementById('note').classList.remove('rtl');
         }
     }
 
