@@ -45,6 +45,11 @@
                 margin: 10px;
             }
         }
+
+        /* Style for Arabic text to display RTL */
+        .rtl {
+            direction: rtl;
+        }
     </style>
 </head>
 <body>
@@ -75,6 +80,7 @@
 
     function translateContent(lang) {
         if (lang === 'ar') {
+            // Add 'rtl' class to make Arabic text display RTL
             document.getElementById('title').textContent = 'تحذير إعادة جلسات الإعادة';
             document.getElementById('advice').textContent = 'ننصح عملائنا بإعادة جلساتهم الآن ومن ثم لأنه يمكن أن يكون مفيدا لأسباب عدة:';
             document.getElementById('extra-security').textContent = 'أمان إضافي:';
