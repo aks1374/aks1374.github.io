@@ -71,13 +71,11 @@
     <h6 class="language-text en-text" id="noteTextEN">Note that changing sessions will not affect your operations.</h6>
     <h6 class="language-text ar-text" id="noteTextAR">يرجى ملاحظة أن تغيير الجلسات لن يؤثر على عملياتك.</h6>
 </main>
-
 <script>
     // Language strings
     const languageStrings = {
         en: {
             header: "Reset Sessions Advisory",
-            advisory: "We advise our clients to reset their sessions now and then because it can be helpful for a few reasons:",
             security: "Extra Security:",
             privacy: "Privacy Boost:",
             functionality: "Improved Functionality:",
@@ -85,7 +83,6 @@
         },
         ar: {
             header: "نصيحة إعادة تعيين الجلسات",
-            advisory: "ننصح عملائنا بإعادة تعيين جلساتهم الآن ومن ثم لأنه يمكن أن يكون مفيدًا لعدة أسباب:",
             security: "أمان إضافي:",
             privacy: "زيادة الخصوصية:",
             functionality: "تحسين الوظائف:",
@@ -97,21 +94,18 @@
     function setLanguageText(language) {
         const strings = languageStrings[language];
         document.getElementById('headerText').innerText = strings.header;
-        document.getElementById('advisoryText').innerText = strings.advisory;
-        document.getElementById('securityText').innerText = strings.security;
-        document.getElementById('privacyText').innerText = strings.privacy;
-        document.getElementById('functionalityText').innerText = strings.functionality;
-        document.getElementById('noteText').innerText = strings.note;
+        document.getElementById('securityTextEN').innerText = strings.security;
+        document.getElementById('privacyTextEN').innerText = strings.privacy;
+        document.getElementById('functionalityTextEN').innerText = strings.functionality;
+        document.getElementById('noteTextEN').innerText = strings.note;
 
-        // Hide all language elements
-        const allElements = document.querySelectorAll('.language-text');
-        allElements.forEach(element => {
+        const elementsToHide = document.querySelectorAll('.language-text');
+        elementsToHide.forEach(element => {
             element.style.display = 'none';
         });
 
-        // Show elements for the selected language
-        const languageElements = document.querySelectorAll(`.${language}-text`);
-        languageElements.forEach(element => {
+        const elementsToShow = document.querySelectorAll(`.${language}-text`);
+        elementsToShow.forEach(element => {
             element.style.display = 'block';
         });
     }
