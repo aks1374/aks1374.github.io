@@ -104,11 +104,10 @@
         }
         translateContent(lang);
     }
-
+let dataSentMessage;
     function translateContent(lang) {
         let successMessage;
-        let dataSentMessage;
-
+        
         if (lang === 'ar') {
             document.getElementById('title').textContent = 'لماذا أعيد تعيين الجلسات؟';
             document.getElementById('advice').textContent = 'ننصح عملائنا بإعادة تعيين جلساتهم من الحين إلى الآخر لأنه يمكن أن يكون مفيدا لأسباب عدة منها:';
