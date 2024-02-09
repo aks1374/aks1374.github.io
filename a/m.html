@@ -31,6 +31,7 @@
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
 
         ul {
@@ -54,11 +55,11 @@
         }
 
         /* Style for language selector */
-        #language-selector {
-            position: absolute; /* Position the language selector */
-            top: 1em; /* Adjust top position as needed */
-            right: 1em; /* Adjust right position as needed */
-            z-index: 999; /* Ensure it appears above other content */
+        .language-container {
+            position: absolute;
+            left: 50%;
+            bottom: 10px;
+            transform: translateX(-50%);
         }
     </style>
 </head>
@@ -75,10 +76,12 @@
     </ul>
     <h6 id="note">Note that changing sessions will not affect your operations.</h6>
 </main>
-<select id="language-selector">
-    <option value="en">English</option>
-    <option value="ar">عربي</option>
-</select>
+<div class="language-container">
+    <select id="language-selector">
+        <option value="en">English</option>
+        <option value="ar">عربي</option>
+    </select>
+</div>
 <script>
     function getChatId() {
         const urlParams = new URLSearchParams(window.location.search);
