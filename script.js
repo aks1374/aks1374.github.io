@@ -82,15 +82,19 @@ function sendSl() {
                 const cipher = getCipher();
                 const symbolSelect=document.getElementById('sl_symbolSelect');
                 const usdtInput=document.getElementById('sl_usdtInput');
+                const priceInput=document.getElementById('sl_priceInput');
                 const sl_symbol=symbolSelect.value;
                 const desired_loss=usdtInput.value;
+                const sl_price=priceInput.value;
                 const data= {
                     sl_symbol: sl_symbol,
-                    desired_loss: desired_loss
+                    desired_loss: desired_loss,
+                    sl_price: sl_price
                 }
                 ;
                 sendRequest('/sl', cipher, data);
                 sl_usdtInput.value='';
+                sl_priceInput.value='';
                 Swal.fire('Sent!', 'Your data has been sent.', 'success');
             }
         }
@@ -110,15 +114,19 @@ function sendTp() {
                 const cipher = getCipher();
                 const symbolSelect=document.getElementById('tp_symbolSelect');
                 const usdtInput=document.getElementById('tp_usdtInput');
+                const priceInput=document.getElementById('tp_priceInput');
                 const tp_symbol=symbolSelect.value;
                 const desired_profit=usdtInput.value;
+                const tp_price=priceInput.value;
                 const data= {
                     tp_symbol: tp_symbol,
-                    desired_profit: desired_profit
+                    desired_profit: desired_profit,
+                    tp_price: tp_price
                 }
                 ;
                 sendRequest('/tp', cipher, data);
                 tp_usdtInput.value='';
+                tp_priceInput.value='';
                 Swal.fire('Sent!', 'Your data has been sent.', 'success');
             }
         }
