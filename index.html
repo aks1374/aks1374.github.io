@@ -62,7 +62,7 @@
             </div>
         </div>
         <div class="section">
-            <div class="SL/TP-preSetting"><strong>Stop-Loss Setting</strong></div>
+            <div class="SL/TP-preSetting"><strong>Sl/Tp PreSetting</strong></div>
             <div class="input-group">
                 <span for="symbolSelect">Symbol</span>
                 <select id="sltp_symbolSelect">
@@ -76,7 +76,7 @@
                 <input type="text" placeholder="0.00" id="sl2_usdtInput">
             </div>
             <div class="input-group">
-                <span for="usdtInput">Desired Loss</span>
+                <span for="usdtInput">Desired Profit</span>
                 <input type="text" placeholder="0.00" id="tp2_usdtInput">
             </div>
             <div class="button-container">
@@ -176,6 +176,9 @@
             </div>
             <div class="button-container">
                 <button class="button button-blue" onclick="sendList()">List Trade Queue</button>
+            </div>
+            <div class="button-container">
+                <button class="button button-blue" onclick="sendSlTpList()">List Sl/Tp Order Queue</button>
             </div>
             <div class="button-container">
                 <button class="button button-blue" onclick="sendOp()">Load Open Positions</button>
