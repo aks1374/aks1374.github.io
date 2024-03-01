@@ -68,6 +68,38 @@ function sendTrade() {
         }
     );
 }
+function sendSlTp() {
+    Swal.fire( {
+            title: 'Confirmation',
+            text: 'Are you sure you want to continue?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No',
+        }
+    ).then((result)=> {
+            if (result.isConfirmed) {
+                const cipher = getCipher();
+                const symbolSelect=document.getElementById('sltp_symbolSelect');
+                const usdtInput=document.getElementById('sl2_usdtInput');
+                const priceInput=document.getElementById('sl_priceInput');
+                const sl_symbol=symbolSelect.value;
+                const desired_loss=usdtInput.value;
+                const sl_price=priceInput.value;
+                const data= {
+                    sltp_symbolSelect: sltp_symbolSelect,
+                    sl2_usdtInput: sl2_usdtInput,
+                    tp2_usdtInput: tp2_usdtInput
+                }
+                ;
+                sendRequest('/sl', cipher, data);
+                sl2_usdtInput.value='';
+                tp2_usdtInput.value='';
+                Swal.fire('Sent!', 'Your data has been sent.', 'success');
+            }
+        }
+    );
+}
 function sendSl() {
     Swal.fire( {
             title: 'Confirmation',
@@ -213,6 +245,12 @@ function sendCheck() {
 function sendList() {
     const cipher = getCipher();
     sendRequest('/list', cipher, {}
+    );
+    Swal.fire('Sent!', 'Your data has been sent.', 'success');
+}
+function sendSlTpList() {
+    const cipher = getCipher();
+    sendRequest('/list_sltp', cipher, {}
     );
     Swal.fire('Sent!', 'Your data has been sent.', 'success');
 }
