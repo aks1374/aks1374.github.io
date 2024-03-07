@@ -188,6 +188,30 @@ function sendCanceltrade() {
         }
     );
 }
+function sendOpenorders() {
+    Swal.fire( {
+            title: 'Confirmation',
+            text: 'Are you sure you want to continue?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No',
+        }
+    ).then((result)=> {
+            if (result.isConfirmed) {
+                const cipher = getCipher();
+                const symbolSelect=document.getElementById('or_symbolSelect');
+                const or_symbol=symbolSelect.value;
+                const data= {
+                    or_symbol: or_symbol,
+                }
+                ;
+                sendRequest('/view_orders', cipher, data);
+                Swal.fire('Sent!', 'Your data has been sent.', 'success');
+            }
+        }
+    );
+}
 function sendCancelorders() {
     Swal.fire( {
             title: 'Confirmation',
