@@ -142,6 +142,20 @@
             </div>
         </div>
         <div class="section">
+            <div class="Open-Orders-Viewing"><strong>Open Orders Viewing</strong></div>
+            <div class="input-group">
+                <span for="symbolSelect">View open orders for</span>
+                <select id="or_symbolSelect">
+                    <option value="BTCUSDT">BTC</option>
+                    <option value="ETHUSDT">ETH</option>
+                    <option value="BNBUSDT">BNB</option>
+                </select>
+            </div>
+            <div class="button-container">
+                <button class="button" onclick="sendOpenorders()">Veiw Orders</button>
+            </div>
+        </div>
+        <div class="section">
             <div class="Open-Orders-Cancelling"><strong>Open Orders Cancelling</strong></div>
             <div class="input-group">
                 <span for="symbolSelect">Cancel open orders for</span>
