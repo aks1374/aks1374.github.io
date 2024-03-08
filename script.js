@@ -121,7 +121,8 @@ function sendSl() {
                 const data= {
                     sl_symbol: sl_symbol,
                     desired_loss: desired_loss,
-                    sl_price: sl_price
+                    sl_price: sl_price,
+                    type: STOP_MARKET
                 }
                 ;
                 sendRequest('/sl', cipher, data);
@@ -153,7 +154,8 @@ function sendTp() {
                 const data= {
                     tp_symbol: tp_symbol,
                     desired_profit: desired_profit,
-                    tp_price: tp_price
+                    tp_price: tp_price,
+                    type: TAKE_PROFIT_MARKET
                 }
                 ;
                 sendRequest('/tp', cipher, data);
