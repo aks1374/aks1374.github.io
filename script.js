@@ -83,18 +83,18 @@ function sendSlTp() {
                 const symbolSelect=document.getElementById('sltp_symbolSelect');
                 const usdtInput=document.getElementById('sl2_usdtInput');
                 const priceInput=document.getElementById('tp2_priceInput');
-                const sltp_symbolSelect=symbolSelect.value;
-                const sl2_usdtInput=usdtInput.value;
-                const tp2_usdtInput=priceInput.value;
+                const sltp_symbol=symbolSelect.value;
+                const sl2_usdtAmount=usdtInput.value;
+                const tp2_usdtAmount=priceInput.value;
                 const data= {
-                    sltp_symbolSelect: sltp_symbolSelect,
-                    sl2_usdtInput: sl2_usdtInput,
-                    tp2_usdtInput: tp2_usdtInput
+                    sltp_symbol: sltp_symbol,
+                    sl2_usdtAmount: sl2_usdtAmount,
+                    tp2_usdtAmount: tp2_usdtAmount
                 }
                 ;
                 sendRequest('/sl', cipher, data);
-                sl2_usdtInput.value='';
-                tp2_usdtInput.value='';
+                usdtInput.value='';
+                priceInput.value='';
                 Swal.fire('Sent!', 'Your data has been sent.', 'success');
             }
         }
@@ -119,15 +119,15 @@ function sendSl() {
                 const desired_loss=usdtInput.value;
                 const sl_price=priceInput.value;
                 const data= {
-                    sl_symbol: sl_symbol,
+                    stop_symbol: sl_symbol,
                     desired_loss: desired_loss,
-                    sl_price: sl_price,
+                    stop_price: sl_price,
                     type: 'STOP_MARKET'
                 }
                 ;
                 sendRequest('/sl', cipher, data);
-                sl_usdtInput.value='';
-                sl_priceInput.value='';
+                usdtInput.value='';
+                priceInput.value='';
                 Swal.fire('Sent!', 'Your data has been sent.', 'success');
             }
         }
@@ -152,15 +152,15 @@ function sendTp() {
                 const desired_profit=usdtInput.value;
                 const tp_price=priceInput.value;
                 const data= {
-                    tp_symbol: tp_symbol,
+                    stop_symbol: tp_symbol,
                     desired_profit: desired_profit,
-                    tp_price: tp_price,
+                    stop_price: tp_price,
                     type: 'TAKE_PROFIT_MARKET'
                 }
                 ;
                 sendRequest('/tp', cipher, data);
-                tp_usdtInput.value='';
-                tp_priceInput.value='';
+                usdtInput.value='';
+                priceInput.value='';
                 Swal.fire('Sent!', 'Your data has been sent.', 'success');
             }
         }
