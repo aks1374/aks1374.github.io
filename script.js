@@ -126,8 +126,8 @@ function sendSl() {
                 }
                 ;
                 sendRequest('/sl', cipher, data);
-                usdtInput.value='';
-                priceInput.value='';
+                sl_usdtInput.value='';
+                sl_priceInput.value='';
                 Swal.fire('Sent!', 'Your data has been sent.', 'success');
             }
         }
