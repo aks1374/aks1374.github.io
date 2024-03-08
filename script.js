@@ -82,10 +82,10 @@ function sendSlTp() {
                 const cipher = getCipher();
                 const symbolSelect=document.getElementById('sltp_symbolSelect');
                 const usdtInput=document.getElementById('sl2_usdtInput');
-                const priceInput=document.getElementById('sl_priceInput');
-                const sl_symbol=symbolSelect.value;
-                const desired_loss=usdtInput.value;
-                const sl_price=priceInput.value;
+                const priceInput=document.getElementById('tp2_priceInput');
+                const sltp_symbolSelect=symbolSelect.value;
+                const sl2_usdtInput=usdtInput.value;
+                const tp2_usdtInput=priceInput.value;
                 const data= {
                     sltp_symbolSelect: sltp_symbolSelect,
                     sl2_usdtInput: sl2_usdtInput,
