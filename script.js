@@ -125,7 +125,7 @@ function sendSl() {
                     type: 'STOP_MARKET'
                 }
                 ;
-                sendRequest('/sl', cipher, data);
+                sendRequest('stop-loss', cipher, data);
                 usdtInput.value='';
                 priceInput.value='';
                 Swal.fire('Sent!', 'Your data has been sent.', 'success');
@@ -158,7 +158,7 @@ function sendTp() {
                     type: 'TAKE_PROFIT_MARKET'
                 }
                 ;
-                sendRequest('/tp', cipher, data);
+                sendRequest('take-profit', cipher, data);
                 usdtInput.value='';
                 priceInput.value='';
                 Swal.fire('Sent!', 'Your data has been sent.', 'success');
