@@ -115,13 +115,13 @@ function sendSl() {
                 const symbolSelect=document.getElementById('sl_symbolSelect');
                 const usdtInput=document.getElementById('sl_usdtInput');
                 const priceInput=document.getElementById('sl_priceInput');
-                const stop_symbol=symbolSelect.value;
+                const sl_symbol=symbolSelect.value;
                 const desired_loss=usdtInput.value;
-                const stop_price=priceInput.value;
+                const sl_price=priceInput.value;
                 const data= {
-                    stop_symbol: stop_symbol,
+                    stop_symbol: sl_symbol,
                     desired_loss: desired_loss,
-                    stop_price: stop_price,
+                    stop_price: sl_price,
                     type: 'STOP_MARKET'
                 }
                 ;
@@ -148,13 +148,13 @@ function sendTp() {
                 const symbolSelect=document.getElementById('tp_symbolSelect');
                 const usdtInput=document.getElementById('tp_usdtInput');
                 const priceInput=document.getElementById('tp_priceInput');
-                const stop_symbol=symbolSelect.value;
+                const tp_symbol=symbolSelect.value;
                 const desired_profit=usdtInput.value;
-                const stop_price=priceInput.value;
+                const tp_price=priceInput.value;
                 const data= {
-                    stop_symbol: stop_symbol,
+                    stop_symbol: tp_symbol,
                     desired_profit: desired_profit,
-                    stop_price: stop_price,
+                    stop_price: tp_price,
                     type: 'TAKE_PROFIT_MARKET'
                 }
                 ;
