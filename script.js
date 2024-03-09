@@ -120,7 +120,7 @@ function sendSl() {
                 const sl_price=priceInput.value;
                 const data= {
                     stop_symbol: sl_symbol,
-                    desired_loss: desired_loss,
+                    desired_loss_profit: desired_loss,
                     stop_price: sl_price,
                     type: 'STOP_MARKET'
                 }
@@ -153,7 +153,7 @@ function sendTp() {
                 const tp_price=priceInput.value;
                 const data= {
                     stop_symbol: tp_symbol,
-                    desired_profit: desired_profit,
+                    desired_loss_profit: desired_profit,
                     stop_price: tp_price,
                     type: 'TAKE_PROFIT_MARKET'
                 }
