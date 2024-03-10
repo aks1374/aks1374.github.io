@@ -128,20 +128,6 @@
             </div>
         </div>
         <div class="section">
-            <div class="Trade-Queue-Cancelling"><strong>Trade Queue Cancelling</strong></div>
-            <div class="input-group">
-                <span for="symbolSelect">Cancel queued trade of</span>
-                <select id="ct_symbolSelect">
-                    <option value="BTCUSDT">BTC</option>
-                    <option value="ETHUSDT">ETH</option>
-                    <option value="BNBUSDT">BNB</option>
-                </select>
-            </div>
-            <div class="button-container">
-                <button class="button" onclick="sendCanceltrade()">Cancel Trade</button>
-            </div>
-        </div>
-        <div class="section">
             <div class="Open-Orders-Viewing"><strong>Open Orders Viewing</strong></div>
             <div class="input-group">
                 <span for="symbolSelect">View open orders for</span>
@@ -167,6 +153,20 @@
             </div>
             <div class="button-container">
                 <button class="button" onclick="sendCancelorders()">Cancel Orders</button>
+            </div>
+        </div>
+        <div class="section">
+            <div class="Trade-Queue-Cancelling"><strong>Trade Queue Cancelling</strong></div>
+            <div class="input-group">
+                <span for="symbolSelect">Cancel queued trade of</span>
+                <select id="ct_symbolSelect">
+                    <option value="BTCUSDT">BTC</option>
+                    <option value="ETHUSDT">ETH</option>
+                    <option value="BNBUSDT">BNB</option>
+                </select>
+            </div>
+            <div class="button-container">
+                <button class="button" onclick="sendCanceltrade()">Cancel Trade</button>
             </div>
         </div>
         <div class="section">
