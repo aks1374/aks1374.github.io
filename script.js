@@ -52,49 +52,23 @@ function sendTrade() {
                 const symbolSelect=document.getElementById('symbolSelect');
                 const leverageSelect=document.getElementById('leverageSelect');
                 const usdtInput=document.getElementById('usdtInput');
+                const desired_loss=document.getElementById('desired_loss');
+                const desired_profit=document.getElementById('desired_profit');
                 const symbol=symbolSelect.value;
                 const leverage=leverageSelect.value;
                 const usdtAmount=usdtInput.value;
+                const desired_loss=desired_loss.value;
+                const desired_profit=desired_profit.value;
                 const data= {
                     symbol: symbol,
                     leverage: leverage,
-                    usdtAmount: usdtAmount
+                    usdtAmount: usdtAmount,
+                    desired_loss: desired_loss,
+                    desired_profit: desired_profit
                 }
                 ;
                 sendRequest('/trade', cipher, data);
                 usdtInput.value='';
-                Swal.fire('Sent!', 'Your data has been sent.', 'success');
-            }
-        }
-    );
-}
-function sendSlTp() {
-    Swal.fire( {
-            title: 'Confirmation',
-            text: 'Are you sure you want to continue?',
-            icon: 'question',
-            showCancelButton: true,
-            confirmButtonText: 'Yes',
-            cancelButtonText: 'No',
-        }
-    ).then((result)=> {
-            if (result.isConfirmed) {
-                const cipher = getCipher();
-                const symbolSelect=document.getElementById('sltp_symbolSelect');
-                const usdtInput=document.getElementById('sl2_usdtInput');
-                const priceInput=document.getElementById('tp2_priceInput');
-                const sltp_symbol=symbolSelect.value;
-                const sl2_usdtAmount=usdtInput.value;
-                const tp2_usdtAmount=priceInput.value;
-                const data= {
-                    sltp_symbol: sltp_symbol,
-                    sl2_usdtAmount: sl2_usdtAmount,
-                    tp2_usdtAmount: tp2_usdtAmount
-                }
-                ;
-                sendRequest('/sl', cipher, data);
-                usdtInput.value='';
-                priceInput.value='';
                 Swal.fire('Sent!', 'Your data has been sent.', 'success');
             }
         }
