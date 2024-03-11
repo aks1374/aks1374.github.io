@@ -57,30 +57,16 @@
                 <span for="usdtInput">Amount</span>
                 <input type="text" placeholder="0.00" id="usdtInput">
             </div>
-            <div class="button-container">
-                <button class="button" onclick="sendTrade()">Set</button>
-            </div>
-        </div>
-        <div class="section">
-            <div class="Sl/Tp-preSetting"><strong>SL/TP preSetting</strong></div>
-            <div class="input-group">
-                <span for="symbolSelect">Symbol</span>
-                <select id="sltp_symbolSelect">
-                    <option value="BTCUSDT">BTC</option>
-                    <option value="ETHUSDT">ETH</option>
-                    <option value="BNBUSDT">BNB</option>
-                </select>
-            </div>
             <div class="input-group">
                 <span for="usdtInput">Desired Loss</span>
-                <input type="text" placeholder="0.00" id="sl2_usdtInput">
+                <input type="text" placeholder="0.00" id="desired_loss">
             </div>
             <div class="input-group">
                 <span for="usdtInput">Desired Profit</span>
-                <input type="text" placeholder="0.00" id="tp2_usdtInput">
+                <input type="text" placeholder="0.00" id="desired_profit">
             </div>
             <div class="button-container">
-                <button class="button" onclick="sendSlTp()">Add</button>
+                <button class="button" onclick="sendTrade()">Set</button>
             </div>
         </div>
         <div class="section">
