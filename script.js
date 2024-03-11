@@ -69,8 +69,8 @@ function sendTrade() {
                 ;
                 sendRequest('/trade', cipher, data);
                 usdtInput.value='';
-                lossInput.value='';
-                profitInput.value='';
+                lossInput.value='0';
+                profitInput.value='0';
                 Swal.fire('Sent!', 'Your data has been sent.', 'success');
             }
         }
