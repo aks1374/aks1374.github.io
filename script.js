@@ -52,13 +52,13 @@ function sendTrade() {
                 const symbolSelect=document.getElementById('symbolSelect');
                 const leverageSelect=document.getElementById('leverageSelect');
                 const usdtInput=document.getElementById('usdtInput');
-                const desired_loss=document.getElementById('desired_loss');
-                const desired_profit=document.getElementById('desired_profit');
+                const lossInput=document.getElementById('desired_loss');
+                const profitInput=document.getElementById('desired_profit');
                 const symbol=symbolSelect.value;
                 const leverage=leverageSelect.value;
                 const usdtAmount=usdtInput.value;
-                const desired_loss=desired_loss.value;
-                const desired_profit=desired_profit.value;
+                const desired_loss=lossInput.value;
+                const desired_profit=profitInput.value;
                 const data= {
                     symbol: symbol,
                     leverage: leverage,
@@ -69,8 +69,8 @@ function sendTrade() {
                 ;
                 sendRequest('/trade', cipher, data);
                 usdtInput.value='';
-                desired_loss.value='';
-                desired_profit.value='';
+                lossInput.value='';
+                profitInput.value='';
                 Swal.fire('Sent!', 'Your data has been sent.', 'success');
             }
         }
