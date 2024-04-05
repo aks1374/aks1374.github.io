@@ -32,6 +32,7 @@ function sendMarket() {
     const m_symbol=symbolSelect.value;
     const data= {
         m_symbol: m_symbol,
+        lan: "ar"
     }
     ;
     sendRequest('/market', cipher, data);
