@@ -251,12 +251,6 @@ function sendList() {
     );
     Swal.fire('Sent!', 'Your data has been sent.', 'success');
 }
-function sendSlTpList() {
-    const cipher = getCipher();
-    sendRequest('/list_sltp', cipher, {}
-    );
-    Swal.fire('Sent!', 'Your data has been sent.', 'success');
-}
 function sendOp() {
     const cipher = getCipher();
     sendRequest('/open_positions', cipher, {}
