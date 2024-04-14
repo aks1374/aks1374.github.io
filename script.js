@@ -66,7 +66,7 @@ function sendTrade() {
                     usdtAmount: usdtAmount,
                     desired_loss: desired_loss,
                     desired_profit: desired_profit,
-                    lan: "ar"
+                    lan: "en"
                 }
                 ;
                 sendRequest('/trade', cipher, data);
