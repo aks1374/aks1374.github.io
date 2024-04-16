@@ -99,9 +99,6 @@
         document.documentElement.lang = lang;
         document.querySelector('meta[http-equiv="Content-Language"]').content = lang;
         
-        // Save preferred language in cookies
-        document.cookie = `preferredLanguage=${lang}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`;
-        
         // Save preferred language in local storage
         localStorage.setItem('preferredLanguage', lang);
         
