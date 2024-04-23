@@ -123,14 +123,14 @@ function sendTp() {
     ).then((result)=> {
             if (result.isConfirmed) {
                 const cipher = getCipher();
-                const symbolSelect=document.getElementById('tp_symbolSelect');
-                const usdtInput=document.getElementById('tp_usdtInput');
-                const priceInput=document.getElementById('tp_priceInput');
-                const tp_symbol=symbolSelect.value;
+                const symbolSelect=document.getElementById('symbolSelect');
+                const usdtInput=document.getElementById('usdtInput');
+                const priceInput=document.getElementById('priceInput');
+                const symbol=symbolSelect.value;
                 const desired_profit=usdtInput.value;
                 const tp_price=priceInput.value;
                 const data= {
-                    stop_symbol: tp_symbol,
+                    symbol: symbol,
                     desired_loss_profit: desired_profit,
                     stop_price: tp_price,
                     type: 'TAKE_PROFIT_MARKET'
@@ -156,10 +156,10 @@ function sendCanceltrade() {
     ).then((result)=> {
             if (result.isConfirmed) {
                 const cipher = getCipher();
-                const symbolSelect=document.getElementById('ct_symbolSelect');
-                const ct_symbol=symbolSelect.value;
+                const symbolSelect=document.getElementById('symbolSelect');
+                const symbol=symbolSelect.value;
                 const data= {
-                    ct_symbol: ct_symbol,
+                    symbol: symbol,
                 }
                 ;
                 sendRequest('/cancel_queue_order', cipher, data);
@@ -180,10 +180,10 @@ function sendOpenorders() {
     ).then((result)=> {
             if (result.isConfirmed) {
                 const cipher = getCipher();
-                const symbolSelect=document.getElementById('or_symbolSelect');
-                const or_symbol=symbolSelect.value;
+                const symbolSelect=document.getElementById('symbolSelect');
+                const symbol=symbolSelect.value;
                 const data= {
-                    or_symbol: or_symbol,
+                    symbol: symbol,
                 }
                 ;
                 sendRequest('/view_orders', cipher, data);
