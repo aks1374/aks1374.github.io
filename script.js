@@ -28,7 +28,7 @@ function sendRequest(command, cipher, data) {
 }
 function sendMarket() {
     const cipher = getCipher();
-    const symbolSelect=document.getElementById('symbolSelect');
+    const symbolSelect=document.getElementById('market_symbolSelect');
     const symbol=symbolSelect.value;
     const data= {
         symbol: symbol,
@@ -50,11 +50,11 @@ function sendTrade() {
     ).then((result)=> {
             if (result.isConfirmed) {
                 const cipher = getCipher();
-                const symbolSelect=document.getElementById('symbolSelect');
+                const symbolSelect=document.getElementById('trade_symbolSelect');
                 const leverageSelect=document.getElementById('leverageSelect');
-                const usdtInput=document.getElementById('usdtInput');
-                const lossInput=document.getElementById('desired_loss');
-                const profitInput=document.getElementById('desired_profit');
+                const usdtInput=document.getElementById('trade_usdtInput');
+                const lossInput=document.getElementById('tsl_usdtInput');
+                const profitInput=document.getElementById('ttp_usdtInput');
                 const symbol=symbolSelect.value;
                 const leverage=leverageSelect.value;
                 const usdtAmount=usdtInput.value;
