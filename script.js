@@ -91,7 +91,7 @@ function sendSl() {
             if (result.isConfirmed) {
                 const cipher = getCipher();
                 const symbolSelect=document.getElementById('symbolSelect');
-                const usdtInput=document.getElementById('usdtInput');
+                const usdtInput=document.getElementById('sl_usdtInput');
                 const priceInput=document.getElementById('priceInput');
                 const symbol=symbolSelect.value;
                 const desired_loss=usdtInput.value;
@@ -124,7 +124,7 @@ function sendTp() {
             if (result.isConfirmed) {
                 const cipher = getCipher();
                 const symbolSelect=document.getElementById('symbolSelect');
-                const usdtInput=document.getElementById('usdtInput');
+                const usdtInput=document.getElementById('tp_usdtInput');
                 const priceInput=document.getElementById('priceInput');
                 const symbol=symbolSelect.value;
                 const desired_profit=usdtInput.value;
