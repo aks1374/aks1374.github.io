@@ -204,10 +204,10 @@ function sendCancelorders() {
     ).then((result)=> {
             if (result.isConfirmed) {
                 const cipher = getCipher();
-                const symbolSelect=document.getElementById('c_symbolSelect');
-                const c_symbol=symbolSelect.value;
+                const symbolSelect=document.getElementById('symbolSelect');
+                const symbol=symbolSelect.value;
                 const data= {
-                    c_symbol: c_symbol,
+                    symbol: symbol,
                 }
                 ;
                 sendRequest('/cancel_orders', cipher, data);
@@ -228,10 +228,10 @@ function sendClose() {
     ).then((result)=> {
             if (result.isConfirmed) {
                 const cipher = getCipher();
-                const symbolSelect=document.getElementById('close_symbolSelect');
-                const close_symbol=symbolSelect.value;
+                const symbolSelect=document.getElementById('symbolSelect');
+                const symbol=symbolSelect.value;
                 const data= {
-                    close_symbol: close_symbol,
+                    symbol: symbol,
                 }
                 ;
                 sendRequest('/close', cipher, data);
