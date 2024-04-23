@@ -28,10 +28,10 @@ function sendRequest(command, cipher, data) {
 }
 function sendMarket() {
     const cipher = getCipher();
-    const symbolSelect=document.getElementById('m_symbolSelect');
-    const m_symbol=symbolSelect.value;
+    const symbolSelect=document.getElementById('symbolSelect');
+    const symbol=symbolSelect.value;
     const data= {
-        m_symbol: m_symbol,
+        symbol: symbol,
         lan: "en"
     }
     ;
@@ -90,14 +90,14 @@ function sendSl() {
     ).then((result)=> {
             if (result.isConfirmed) {
                 const cipher = getCipher();
-                const symbolSelect=document.getElementById('sl_symbolSelect');
-                const usdtInput=document.getElementById('sl_usdtInput');
-                const priceInput=document.getElementById('sl_priceInput');
-                const sl_symbol=symbolSelect.value;
+                const symbolSelect=document.getElementById('symbolSelect');
+                const usdtInput=document.getElementById('usdtInput');
+                const priceInput=document.getElementById('priceInput');
+                const symbol=symbolSelect.value;
                 const desired_loss=usdtInput.value;
                 const sl_price=priceInput.value;
                 const data= {
-                    stop_symbol: sl_symbol,
+                    symbol: symbol,
                     desired_loss_profit: desired_loss,
                     stop_price: sl_price,
                     type: 'STOP_MARKET'
