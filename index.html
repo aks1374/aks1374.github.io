@@ -17,8 +17,8 @@
         <div class="section">
             <div class="Markets"><strong>Markets</strong></div>
             <div class="input-group">
-                <span for="symbolSelect">Get the last price of</span>
-                <select id="symbolSelect">
+                <span for="market_symbolSelect">Get the last price of</span>
+                <select id="market_symbolSelect">
                     <option value="BTCUSDT">BTC</option>
                     <option value="ETHUSDT">ETH</option>
                     <option value="BNBUSDT">BNB</option>
@@ -31,8 +31,8 @@
         <div class="section">
             <div class="Trade-Setting"><strong>Trade Setting</strong></div>
             <div class="input-group">
-                <span for="symbolSelect">Symbol</span>
-                <select id="symbolSelect">
+                <span for="trade_symbolSelect">Symbol</span>
+                <select id="trade_symbolSelect">
                     <option value="BTCUSDT">BTC</option>
                     <option value="ETHUSDT">ETH</option>
                     <option value="BNBUSDT">BNB</option>
@@ -54,16 +54,16 @@
                 </select>
             </div>
             <div class="input-group">
-                <span for="usdtInput">Amount (usdt)</span>
-                <input type="text" placeholder="0.00" id="usdtInput">
+                <span for="trade_usdtInput">Amount (usdt)</span>
+                <input type="text" placeholder="0.00" id="trade_usdtInput">
             </div>
             <div class="input-group">
-                <span for="usdtInput">Stop-loss (usdt)</span>
-                <input type="text" placeholder="0.00" id="desired_loss">
+                <span for="tsl_usdtInput">Stop-loss (usdt)</span>
+                <input type="text" placeholder="0.00" id="tsl_usdtInput">
             </div>
             <div class="input-group">
-                <span for="usdtInput">Take-profit (usdt)</span>
-                <input type="text" placeholder="0.00" id="desired_profit">
+                <span for="ttp_usdtInput">Take-profit (usdt)</span>
+                <input type="text" placeholder="0.00" id="ttp_usdtInput">
             </div>
             <div class="button-container">
                 <button class="button" onclick="sendTrade()">Set</button>
