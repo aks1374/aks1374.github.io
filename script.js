@@ -58,14 +58,14 @@ function sendTrade() {
                 const symbol=symbolSelect.value;
                 const leverage=leverageSelect.value;
                 const usdtAmount=usdtInput.value;
-                const desired_loss=lossInput.value;
-                const desired_profit=profitInput.value;
+                const sl=lossInput.value;
+                const tp=profitInput.value;
                 const data= {
                     symbol: symbol,
                     leverage: leverage,
                     usdtAmount: usdtAmount,
-                    desired_loss: desired_loss,
-                    desired_profit: desired_profit,
+                    sl: sl,
+                    tp: tp,
                     lan: "en"
                 }
                 ;
