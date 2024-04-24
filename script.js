@@ -144,30 +144,6 @@ function sendTp() {
         }
     );
 }
-function sendCanceltrade() {
-    Swal.fire( {
-            title: 'Confirmation',
-            text: 'Are you sure you want to continue?',
-            icon: 'question',
-            showCancelButton: true,
-            confirmButtonText: 'Yes',
-            cancelButtonText: 'No',
-        }
-    ).then((result)=> {
-            if (result.isConfirmed) {
-                const cipher = getCipher();
-                const symbolSelect=document.getElementById('oov_symbolSelect');
-                const symbol=symbolSelect.value;
-                const data= {
-                    symbol: symbol,
-                }
-                ;
-                sendRequest('/cancel_queue_order', cipher, data);
-                Swal.fire('Sent!', 'Your data has been sent.', 'success');
-            }
-        }
-    );
-}
 function sendOpenorders() {
     Swal.fire( {
             title: 'Confirmation',
@@ -180,7 +156,7 @@ function sendOpenorders() {
     ).then((result)=> {
             if (result.isConfirmed) {
                 const cipher = getCipher();
-                const symbolSelect=document.getElementById('ooc_symbolSelect');
+                const symbolSelect=document.getElementById('oov_symbolSelect');
                 const symbol=symbolSelect.value;
                 const data= {
                     symbol: symbol,
@@ -204,13 +180,37 @@ function sendCancelorders() {
     ).then((result)=> {
             if (result.isConfirmed) {
                 const cipher = getCipher();
-                const symbolSelect=document.getElementById('tqc_symbolSelect');
+                const symbolSelect=document.getElementById('ooc_symbolSelect');
                 const symbol=symbolSelect.value;
                 const data= {
                     symbol: symbol,
                 }
                 ;
                 sendRequest('/cancel_orders', cipher, data);
+                Swal.fire('Sent!', 'Your data has been sent.', 'success');
+            }
+        }
+    );
+}
+function sendCanceltrade() {
+    Swal.fire( {
+            title: 'Confirmation',
+            text: 'Are you sure you want to continue?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No',
+        }
+    ).then((result)=> {
+            if (result.isConfirmed) {
+                const cipher = getCipher();
+                const symbolSelect=document.getElementById('tqc_symbolSelect');
+                const symbol=symbolSelect.value;
+                const data= {
+                    symbol: symbol,
+                }
+                ;
+                sendRequest('/cancel_queue_order', cipher, data);
                 Swal.fire('Sent!', 'Your data has been sent.', 'success');
             }
         }
