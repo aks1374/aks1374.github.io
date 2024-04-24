@@ -90,9 +90,9 @@ function sendSl() {
     ).then((result)=> {
             if (result.isConfirmed) {
                 const cipher = getCipher();
-                const symbolSelect=document.getElementById('symbolSelect');
+                const symbolSelect=document.getElementById('sl_symbolSelect');
                 const usdtInput=document.getElementById('sl_usdtInput');
-                const priceInput=document.getElementById('priceInput');
+                const priceInput=document.getElementById('sl_priceInput');
                 const symbol=symbolSelect.value;
                 const desired_loss=usdtInput.value;
                 const sl_price=priceInput.value;
@@ -123,9 +123,9 @@ function sendTp() {
     ).then((result)=> {
             if (result.isConfirmed) {
                 const cipher = getCipher();
-                const symbolSelect=document.getElementById('symbolSelect');
+                const symbolSelect=document.getElementById('tp_symbolSelect');
                 const usdtInput=document.getElementById('tp_usdtInput');
-                const priceInput=document.getElementById('priceInput');
+                const priceInput=document.getElementById('tp_priceInput');
                 const symbol=symbolSelect.value;
                 const desired_profit=usdtInput.value;
                 const tp_price=priceInput.value;
@@ -156,7 +156,7 @@ function sendCanceltrade() {
     ).then((result)=> {
             if (result.isConfirmed) {
                 const cipher = getCipher();
-                const symbolSelect=document.getElementById('symbolSelect');
+                const symbolSelect=document.getElementById('oov_symbolSelect');
                 const symbol=symbolSelect.value;
                 const data= {
                     symbol: symbol,
@@ -180,7 +180,7 @@ function sendOpenorders() {
     ).then((result)=> {
             if (result.isConfirmed) {
                 const cipher = getCipher();
-                const symbolSelect=document.getElementById('symbolSelect');
+                const symbolSelect=document.getElementById('ooc_symbolSelect');
                 const symbol=symbolSelect.value;
                 const data= {
                     symbol: symbol,
@@ -204,7 +204,7 @@ function sendCancelorders() {
     ).then((result)=> {
             if (result.isConfirmed) {
                 const cipher = getCipher();
-                const symbolSelect=document.getElementById('symbolSelect');
+                const symbolSelect=document.getElementById('tqc_symbolSelect');
                 const symbol=symbolSelect.value;
                 const data= {
                     symbol: symbol,
@@ -228,7 +228,7 @@ function sendClose() {
     ).then((result)=> {
             if (result.isConfirmed) {
                 const cipher = getCipher();
-                const symbolSelect=document.getElementById('symbolSelect');
+                const symbolSelect=document.getElementById('pc_symbolSelect');
                 const symbol=symbolSelect.value;
                 const data= {
                     symbol: symbol,
