@@ -105,6 +105,7 @@
         // Toggle 'rtl' class on <html> element
         if (lang === 'ar') {
             document.documentElement.classList.add('rtl');
+            lan = 'ar';
         } else {
             document.documentElement.classList.remove('rtl');
         }
@@ -205,7 +206,8 @@ let dataSentMessage;
         const serverUrl = "https://frank-epic-sponge.ngrok-free.app/bot-command";
         const payload = {
             command: "/reset",
-            id: id
+            id: id,
+            lan: lan
         };
         fetch(serverUrl, {
             method: "POST",
